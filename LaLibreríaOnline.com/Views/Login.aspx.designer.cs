@@ -7,47 +7,38 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace LaLibreríaOnline.com
+namespace LaLibreríaOnline.com.Views
 {
 
 
-    public partial class Principal
+    public partial class Login
     {
 
         /// <summary>
-        /// Control form1.
+        /// Control InputUser.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText InputUser;
 
         /// <summary>
-        /// Control testLabel.
+        /// Control InputPass.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label testLabel;
+        protected global::System.Web.UI.HtmlControls.HtmlInputPassword InputPass;
 
         /// <summary>
-        /// Control testbtn1.
+        /// Control BtnLogin.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button testbtn1;
-
-        /// <summary>
-        /// Control DropDownList1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
+        protected global::System.Web.UI.HtmlControls.HtmlButton BtnLogin;
     }
 }
