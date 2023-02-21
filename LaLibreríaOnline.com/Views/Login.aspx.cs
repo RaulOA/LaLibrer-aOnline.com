@@ -1,9 +1,11 @@
-﻿using System;
+﻿using LaLibreríaOnline.com.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using loginController = LaLibreríaOnline.com.Controllers;
 
 namespace LaLibreríaOnline.com.Views
 {
@@ -16,11 +18,13 @@ namespace LaLibreríaOnline.com.Views
 
         protected void BtnLogin_ServerClick(object sender, EventArgs e)
         {
-            string usuario = InputUser.Value;
-            string contrasena = InputPass.Value;
-            string mensaje = "alert('¡Hola mundo!')";
-            Page.ClientScript.RegisterStartupScript(this.GetType(), "CallMyFunction", "showModal('You must login to access this page')", true);
-            Page.ClientScript.RegisterStartupScript(this.GetType(), "mensaje", mensaje, true);
+            loginController.Login login = new loginController.Login();
+            LoginResponsePayload loginInfo = login.signInWithPassword(InputUser.Value, InputPass.Value);
+
+
+
+            //string mensaje = $"alert('Usuario: {usuario} // Contraseña: {contrasena}')";
+            //Page.ClientScript.RegisterStartupScript(this.GetType(), "mensaje", mensaje, true);
         }
     }
 }

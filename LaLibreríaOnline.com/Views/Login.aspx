@@ -71,22 +71,21 @@
             </div>
         </header>
         <main class="px-3">
-
             <h1>Inicia Sesión</h1>
             <!-- Esta es la parte donde se debe poner un nombre y una contraseña -->
-
-            <div class="input-group mb-3" style="max-width: 400px; margin: 0 auto; padding: 0 10px;">
-                <span class="input-group-text" id="basic-addon1">Usuario</span>
-                <input id="InputUser" runat="server" type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" />
-            </div>
-            <div class="input-group mb-3" style="max-width: 400px; margin: 0 auto; padding: 0 10px;">
-                <span class="input-group-text" id="basic-addon2">Contraseña</span>
-                <input id="InputPass" runat="server" type="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon2" />
-            </div>
-            <p class="lead">
-                <button id="BtnLogin" runat="server" onserverclick="BtnLogin_ServerClick" type="button" class="btn btn-primary btn-lg px-4 gap-3">Ingresar</button>
-            </p>
-
+            <form id="FormLogin" runat="server">
+                <div class="input-group mb-3" style="max-width: 400px; margin: 0 auto; padding: 0 10px;">
+                    <span class="input-group-text" id="basic-addon1">Usuario</span>
+                    <input id="InputUser" runat="server" type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" />
+                </div>
+                <div class="input-group mb-3" style="max-width: 400px; margin: 0 auto; padding: 0 10px;">
+                    <span class="input-group-text" id="basic-addon2">Contraseña</span>
+                    <input id="InputPass" runat="server" type="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon2" />
+                </div>
+                <p class="lead">
+                    <button id="BtnLogin" runat="server" onserverclick="BtnLogin_ServerClick" class="btn btn-primary btn-lg px-4 gap-3">Ingresar</button>
+                </p>
+            </form>
         </main>
         <footer class="mt-auto text-white-50">
             <p>

@@ -15,6 +15,15 @@ namespace LaLibreríaOnline.com.Views
     {
 
         /// <summary>
+        /// Control FormLogin.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlForm FormLogin;
+
+        /// <summary>
         /// Control InputUser.
         /// </summary>
         /// <remarks>
