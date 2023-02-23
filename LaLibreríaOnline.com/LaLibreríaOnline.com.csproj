@@ -70,14 +70,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Styles\css\Login.css" />
+    <Content Include="Styles\css\Cover.css" />
     <Content Include="Styles\css\Principal.css" />
     <Content Include="Views\Login.aspx" />
     <Content Include="Views\Principal.aspx" />
+    <Content Include="Views\Registro.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\Login.cs" />
+    <Compile Include="Controllers\Registro.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\Login.aspx.cs">
@@ -93,6 +95,13 @@
     </Compile>
     <Compile Include="Views\Principal.aspx.designer.cs">
       <DependentUpon>Principal.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Registro.aspx.cs">
+      <DependentUpon>Registro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Registro.aspx.designer.cs">
+      <DependentUpon>Registro.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="LaLibreríaOnline.com.Views.Login" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Registro.aspx.cs" Inherits="LaLibreríaOnline.com.Views.Registro" %>
 
 <!DOCTYPE html>
 
@@ -6,7 +6,7 @@
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Login</title>
+    <title>Registro</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <link href="../Styles/css/Cover.css" rel="stylesheet" />
@@ -71,10 +71,10 @@
             </div>
         </header>
         <main class="px-3">
-            <h1>Inicia Sesión</h1>
+            <h1>Nueva Cuenta</h1>
             <br />
             <!-- Esta es la parte donde se debe poner un nombre y una contraseña -->
-            <form id="FormLogin" runat="server">
+            <form id="FormSignIn" runat="server">
                 <div class="input-group mb-3" style="max-width: 400px; margin: 0 auto; padding: 0 10px;">
                     <span class="input-group-text" id="basic-addon1">Usuario</span>
                     <input id="InputUser" runat="server" type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" />
@@ -86,13 +86,13 @@
                 </div>
                 <br />
                 <p class="lead">
-                    <button id="BtnLogin" runat="server" onserverclick="BtnLogin_ServerClick" class="btn btn-primary btn-lg px-4 gap-3">Ingresar</button>
+                    <button id="BtnSignIn" runat="server" onserverclick="BtnSignIn_ServerClick" class="btn btn-primary btn-lg px-4 gap-3">Registrarse</button>
                 </p>
             </form>
         </main>
         <footer class="mt-auto text-white-50">
             <p>
-                <a href="Registro.aspx" class="text-white">Crear Nueva Cuenta</a>
+                <a href="Login.aspx" class="text-white">Iniciar Sesión</a>
             </p>
         </footer>
     </div>

@@ -1,19 +1,21 @@
 ﻿using LaLibreríaOnline.com.Models;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Text;
-
+using System.Web;
 
 namespace LaLibreríaOnline.com.Controllers
 {
-    public class Login
+    public class Registro
     {
-        public LoginResponsePayload LogInWithPassword(String usuario, String contrasena)
+        public LoginResponsePayload signUpWithPassword(String usuario, String contrasena)
         {
             var api = "AIzaSyCKIEzDbx3YWDPsC6wWwOKDaiHObhJVOrc";
-            var url = $"https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key={api}";
+            var url = $"https://identitytoolkit.googleapis.com/v1/accounts:signUp?key={api}";
             var postData = $"{{'email':'{usuario}','password':'{contrasena}','returnSecureToken':true}}";
             //Primero se crea un objeto HttpWebRequest y se establecen sus propiedades para indicar que es
             //una solicitud POST y que el tipo de contenido es JSON.

@@ -1,10 +1,6 @@
 ﻿using LaLibreríaOnline.com.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 using loginController = LaLibreríaOnline.com.Controllers;
 
 namespace LaLibreríaOnline.com.Views
@@ -19,9 +15,17 @@ namespace LaLibreríaOnline.com.Views
         protected void BtnLogin_ServerClick(object sender, EventArgs e)
         {
             loginController.Login login = new loginController.Login();
-            LoginResponsePayload loginInfo = login.signInWithPassword(InputUser.Value, InputPass.Value);
+            LoginResponsePayload loginInfo = login.LogInWithPassword(InputUser.Value, InputPass.Value);
 
-
+            if (loginInfo == null)
+            {
+                string mensaje = $"alert('Datos Incorrectos')";
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "mensaje", mensaje, true);
+            }
+            else if (loginInfo.registered)
+            {
+                Response.Redirect("~/Views/Principal.aspx");
+            }
 
             //string mensaje = $"alert('Usuario: {usuario} // Contraseña: {contrasena}')";
             //Page.ClientScript.RegisterStartupScript(this.GetType(), "mensaje", mensaje, true);
