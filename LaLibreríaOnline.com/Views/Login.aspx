@@ -92,7 +92,7 @@
         </main>
         <footer class="mt-auto text-white-50">
             <p>
-                <a href="Registro.aspx" class="text-white">Crear Nueva Cuenta</a>
+                <a href="Registro.aspx" class="text-white">Crear nueva Cuenta</a>
             </p>
         </footer>
     </div>
