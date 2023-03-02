@@ -1,262 +1,337 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Principal.aspx.cs" Inherits="LaLibreríaOnline.com.Principal" %>
 
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 
 <head runat="server">
 
-
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
     <title>Página principal</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous"/>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-    <link href="../Styles/css/Principal.css" rel="stylesheet"/>
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/product/"/>
 
-    <style>
-        .bd-placeholder-img {
-            font-size: 1.125rem;
-            text-anchor: middle;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            user-select: none;
-        }
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="Free HTML Templates" name="keywords" />
+    <meta content="Free HTML Templates" name="description" />
 
-        @media (min-width: 768px) {
-            .bd-placeholder-img-lg {
-                font-size: 3.5rem;
-            }
-        }
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
-        .b-example-divider {
-            height: 3rem;
-            background-color: rgba(0, 0, 0, .1);
-            border: solid rgba(0, 0, 0, .15);
-            border-width: 1px 0;
-            box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
-        }
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet" />
 
-        .b-example-vr {
-            flex-shrink: 0;
-            width: 1.5rem;
-            height: 100vh;
-        }
+    <!-- Libraries Stylesheet -->
+    <link href="../Otros/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
 
-        .bi {
-            vertical-align: -.125em;
-            fill: currentColor;
-        }
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="../Otros/css/style.css" rel="stylesheet" />
 
-        .nav-scroller {
-            position: relative;
-            z-index: 2;
-            height: 2.75rem;
-            overflow-y: hidden;
-        }
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="../Otros/lib/easing/easing.min.js"></script>
+    <script src="../Otros/lib/owlcarousel/owl.carousel.min.js"></script>
 
-            .nav-scroller .nav {
-                display: flex;
-                flex-wrap: nowrap;
-                padding-bottom: 1rem;
-                margin-top: -1px;
-                overflow-x: auto;
-                text-align: center;
-                white-space: nowrap;
-                -webkit-overflow-scrolling: touch;
-            }
-    </style>
+    <!-- Contact Javascript File -->
+    <script src="../Otros/mail/jqBootstrapValidation.min.js"></script>
+    <script src="../Otros/mail/contact.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="../Otros/js/main.js"></script>
 
 </head>
 
 <body>
 
-
-
-    <!-- Pruebas de Clase -->
-
-    <!-- 
     <form id="form1" runat="server">
         <div>
-            <asp:Label ID="testLabel" runat="server">Hello</asp:Label>
-            <hr />
-            <asp:Button CssClass="btn btn-primary" ID="testbtn1" Text="Cambiar" runat="server" OnClick="testbtn1_Click" />
-            <hr />
-            <asp:DropDownList CssClass="btn btn-secondary dropdown-toggle" ID="DropDownList1" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
-                <asp:ListItem Text="Costa Rica" />
-                <asp:ListItem Text="Panama" />
-            </asp:DropDownList>
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Dropdown button
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
+
+            <!-- Topbar Start -->
+            <div class="container-fluid">
+                <div class="row bg-secondary py-2 px-xl-5">
+                    <div class="col-lg-6 d-none d-lg-block">
+                        <div class="d-inline-flex align-items-center">
+                            <a class="text-dark" href="">FAQs</a>
+                            <span class="text-muted px-2">|</span>
+                            <a class="text-dark" href="">Help</a>
+                            <span class="text-muted px-2">|</span>
+                            <a class="text-dark" href="">Support</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 text-center text-lg-right">
+                        <div class="d-inline-flex align-items-center">
+                            <a class="text-dark px-2" href="">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a class="text-dark px-2" href="">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a class="text-dark px-2" href="">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a class="text-dark px-2" href="">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a class="text-dark pl-2" href="">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row align-items-center py-3 px-xl-5">
+                    <div class="col-lg-3 d-none d-lg-block">
+                        <a href="" class="text-decoration-none">
+                            <h1 class="m-0 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border px-3 mr-1">La</span>Libreria</h1>
+                        </a>
+                    </div>
+                    <div class="col-lg-6 col-6 text-left">
+                        <form action="">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Buscar Libro">
+                                <div class="input-group-append">
+                                    <span class="input-group-text bg-transparent text-primary">
+                                        <i class="fa fa-search"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-lg-3 col-6 text-right">
+                        <a href="" class="btn border">
+                            <i class="fas fa-heart text-primary"></i>
+                            <span class="badge">0</span>
+                        </a>
+                        <a href="" class="btn border">
+                            <i class="fas fa-shopping-cart text-primary"></i>
+                            <span class="badge">0</span>
+                        </a>
+                    </div>
+                </div>
             </div>
+            <!-- Topbar End -->
+
+            <!-- Navbar Start -->
+            <div class="container-fluid mb-5">
+                <div class="row border-top px-xl-5">
+                    <div class="col">
+                        <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
+                            <a href="" class="text-decoration-none d-block d-lg-none">
+                                <h1 class="m-0 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border px-3 mr-1">La</span>Libreria</h1>
+                            </a>
+                            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                                <div class="navbar-nav ml-auto py-0">
+                                    <a href="" class="nav-item nav-link">Login</a>
+                                    <a href="" class="nav-item nav-link">Regirstate</a>
+                                </div>
+                            </div>
+                        </nav>
+                        <div id="header-carousel" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active" style="height: 410px;">
+                                    <img class="img-fluid" src="../Imagenes/Carusel%20Lord%20of%20the%20Rings.jpg" alt="Image">
+                                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                                        <div class="p-3" style="max-width: 700px;">
+                                            <h4 class="text-light text-uppercase font-weight-medium mb-3">10% De Descuentos</h4>
+                                            <h3 class="display-4 text-white font-weight-semi-bold mb-4">Trilogia El señor de los Anillos</h3>
+                                            <a href="" class="btn btn-light py-2 px-3">Compralo Ya</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="carousel-item" style="height: 410px;">
+                                    <img class="img-fluid" src="../Imagenes/Carusel%20Cronicas%20Vampiricas.jpg" alt="Image">
+                                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                                        <div class="p-3" style="max-width: 700px;">
+                                            <h4 class="text-light text-uppercase font-weight-medium mb-3">10% Descuento en tu Primera Orden</h4>
+                                            <h3 class="display-4 text-white font-weight-semi-bold mb-4">Cronicas Vampiricas - Anne Rice</h3>
+                                            <a href="" class="btn btn-light py-2 px-3">Ordenalo Ahora</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a class="carousel-control-prev" href="#header-carousel" data-slide="prev">
+                                <div class="btn btn-dark" style="width: 45px; height: 45px;">
+                                    <span class="carousel-control-prev-icon mb-n2"></span>
+                                </div>
+                            </a>
+                            <a class="carousel-control-next" href="#header-carousel" data-slide="next">
+                                <div class="btn btn-dark" style="width: 45px; height: 45px;">
+                                    <span class="carousel-control-next-icon mb-n2"></span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Navbar End -->
+
+            <!-- Featured Start -->
+            <div class="container-fluid pt-5">
+                <div class="row px-xl-5 pb-3">
+                    <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+                        <div class="d-flex align-items-center border mb-4" style="padding: 30px;">
+                            <h1 class="fa fa-check text-primary m-0 mr-3"></h1>
+                            <h5 class="font-weight-semi-bold m-0">100% Originales</h5>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+                        <div class="d-flex align-items-center border mb-4" style="padding: 30px;">
+                            <h1 class="fa fa-shipping-fast text-primary m-0 mr-2"></h1>
+                            <h5 class="font-weight-semi-bold m-0">Entrega Gratis</h5>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+                        <div class="d-flex align-items-center border mb-4" style="padding: 30px;">
+                            <h1 class="fas fa-exchange-alt text-primary m-0 mr-3"></h1>
+                            <h5 class="font-weight-semi-bold m-0">Garantia</h5>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+                        <div class="d-flex align-items-center border mb-4" style="padding: 30px;">
+                            <h1 class="fa fa-phone-volume text-primary m-0 mr-3"></h1>
+                            <h5 class="font-weight-semi-bold m-0">Soporte 24/7</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Featured End -->
+
+            <!-- Offer Start -->
+            <div class="container-fluid offer pt-5">
+                <div class="row px-xl-5">
+                    <div class="col-md-6 pb-4">
+                        <div class="position-relative bg-secondary text-center text-md-right text-white mb-2 py-5 px-5">
+                            <img src="https://cdn-icons-png.flaticon.com/512/3504/3504401.png" alt="">
+                            <div class="position-relative" style="z-index: 1;">
+                                <h5 class="text-uppercase text-primary mb-3">20% En toda la Coleccion</h5>
+                                <h1 class="mb-4 font-weight-semi-bold">Cronicas Vampiricas</h1>
+                                <a href="" class="btn btn-outline-primary py-md-2 px-md-3">Comprar Ahora</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 pb-4">
+                        <div class="position-relative bg-secondary text-center text-md-left text-white mb-2 py-5 px-5">
+                            <img src="https://cdn-icons-png.flaticon.com/512/1601/1601065.png">
+                            <div class="position-relative" style="z-index: 1;">
+                                <h5 class="text-uppercase text-primary mb-3">30% En todos los Libros</h5>
+                                <h1 class="mb-4 font-weight-semi-bold">Coleccion Harry Potter</h1>
+                                <a href="" class="btn btn-outline-primary py-md-2 px-md-3">Comprar Ahora</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Offer End -->
+
+            <!-- Products Start -->
+            <div class="container-fluid pt-5">
+                <div class="text-center mb-4">
+                    <h2 class="section-title px-5"><span class="px-2">Libros Disponibles</span></h2>
+                </div>
+                <div class="row px-xl-5 pb-3">
+                    <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+                        <!-- Products Card -->
+                        <div class="card product-item border-0 mb-4">
+                            <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                                <img class="img-fluid w-100" src="../Imagenes/1.jpg" alt="">
+                            </div>
+                            <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                                <div class="text-center">9788445000074</div>
+                                <br />
+                                <h6 class="text-truncate mb-3">La Comunidad del Anillo</h6>
+                                <h5 class="text-truncate mb-3">J.R.R Tolkien</h5>
+                                <div class="d-flex justify-content-center">
+                                    <h6>$23.00</h6>
+                                    <h6 class="text-muted ml-2"><del>$45.00</del></h6>
+                                </div>
+                            </div>
+                            <div class="card-footer d-flex justify-content-between bg-light border">
+                                <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-heart text-primary mr-1"></i>Favoritos</a>
+                                <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Añadir al Carrito</a>
+                            </div>
+                        </div>
+                        <!-- Products Card End-->
+                    </div>
+                </div>
+            </div>
+            <!-- Products End -->
+
+            <!-- Footer Start -->
+            <div class="container-fluid bg-secondary text-dark mt-5 pt-5">
+                <div class="row px-xl-5 pt-5">
+                    <div class="col-lg-4 col-md-12 mb-5 pr-3 pr-xl-5">
+                        <a href="" class="text-decoration-none">
+                            <h1 class="mb-4 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border border-white px-3 mr-1">La</span>Libreria</h1>
+                        </a>
+                        <p>Tu destino en línea para libros de calidad, conocimiento y entretenimiento. Encuentra los títulos más populares de autores destacados y descubre nuevos mundos a través de la lectura. ¡Compra hoy mismo y vive la experiencia de tener una biblioteca virtual!</p>
+                        <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>123 Street, New York, USA</p>
+                        <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>info@example.com</p>
+                        <p class="mb-0"><i class="fa fa-phone-alt text-primary mr-3"></i>+012 345 67890</p>
+                    </div>
+                    <div class="col-lg-8 col-md-12">
+                        <div class="row">
+                            <div class="col-md-4 mb-5">
+                                <h5 class="font-weight-bold text-dark mb-4">Quick Links</h5>
+                                <div class="d-flex flex-column justify-content-start">
+                                    <a class="text-dark mb-2" href="index.html"><i class="fa fa-angle-right mr-2"></i>Home</a>
+                                    <a class="text-dark mb-2" href="shop.html"><i class="fa fa-angle-right mr-2"></i>Our Shop</a>
+                                    <a class="text-dark mb-2" href="detail.html"><i class="fa fa-angle-right mr-2"></i>Shop Detail</a>
+                                    <a class="text-dark mb-2" href="cart.html"><i class="fa fa-angle-right mr-2"></i>Shopping Cart</a>
+                                    <a class="text-dark mb-2" href="checkout.html"><i class="fa fa-angle-right mr-2"></i>Checkout</a>
+                                    <a class="text-dark" href="contact.html"><i class="fa fa-angle-right mr-2"></i>Contact Us</a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-5">
+                                <h5 class="font-weight-bold text-dark mb-4">Quick Links</h5>
+                                <div class="d-flex flex-column justify-content-start">
+                                    <a class="text-dark mb-2" href="index.html"><i class="fa fa-angle-right mr-2"></i>Home</a>
+                                    <a class="text-dark mb-2" href="shop.html"><i class="fa fa-angle-right mr-2"></i>Our Shop</a>
+                                    <a class="text-dark mb-2" href="detail.html"><i class="fa fa-angle-right mr-2"></i>Shop Detail</a>
+                                    <a class="text-dark mb-2" href="cart.html"><i class="fa fa-angle-right mr-2"></i>Shopping Cart</a>
+                                    <a class="text-dark mb-2" href="checkout.html"><i class="fa fa-angle-right mr-2"></i>Checkout</a>
+                                    <a class="text-dark" href="contact.html"><i class="fa fa-angle-right mr-2"></i>Contact Us</a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-5">
+                                <h5 class="font-weight-bold text-dark mb-4">Newsletter</h5>
+                                <form action="">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control border-0 py-4" placeholder="Your Name" required="required" />
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="email" class="form-control border-0 py-4" placeholder="Your Email"
+                                            required="required" />
+                                    </div>
+                                    <div>
+                                        <button class="btn btn-primary btn-block border-0 py-3" type="submit">Subscribe Now</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row border-top border-light mx-xl-5 py-4">
+                    <div class="col-md-6 px-xl-0">
+                        <p class="mb-md-0 text-center text-md-left text-dark">
+                            &copy; <a class="text-dark font-weight-semi-bold" href="#">Your Site Name</a>. All Rights Reserved. Designed
+                    by
+                    <a class="text-dark font-weight-semi-bold" href="https://htmlcodex.com">HTML Codex</a>
+                        </p>
+                    </div>
+                    <div class="col-md-6 px-xl-0 text-center text-md-right">
+                        <img class="img-fluid" src="img/payments.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <!-- Footer End -->
+
+            <!-- Back to Top -->
+            <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
         </div>
     </form>
-    -->
-    <!-- Plantilla Boostrap-->
-
-    <header class="site-header sticky-top py-1">
-        <nav class="container d-flex flex-column flex-md-row
-        justify-content-between">
-            <a class="py-2" href="#" aria-label="Product">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                    fill="none" stroke="currentColor" stroke-linecap="round"
-                    stroke-linejoin="round" stroke-width="2" class="d-block mx-auto"
-                    role="img" viewBox="0 0 24 24">
-                    <title>Libreria Internacional</title>
-                 <%--   <circle cx="12"
-                        cy="12" r="10" />
-                    <path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38
-                12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74
-                9.94" />--%>
-                </svg>
-            </a>
-            <a class="py-2 d-none d-md-inline-block" href="#">Bienvenidos a Libreria Internacional</a>
-            <a class="py-2 d-none d-md-inline-block" href="#">Carrito de compra</a>
-            <a class="py-2 d-none d-md-inline-block" href="#">Perfil</a>
-            <a class="py-2 d-none d-md-inline-block" href="#">Salir</a>
-
-        </nav>
-    </header>
-
-    <main>
-        <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3
-            text-center bg-light">
-            <div class="col-md-5 p-lg-5 mx-auto my-5">
-                <img src ="data:image/png;base64,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"/>
-                <br/>
-                <br/>
-                <%-- <h1 class="display-4 fw-normal">Libreria Internacional</h1>--%>
-                <p class="lead fw-normal">  
-                    Comprá con nosotros, somos tu mejor opción!        
-                </p> 
-              <%--  <a class="btn btn-outline-secondary" href="#">Coming soon</a>--%>
-            </div>
-            <div class="product-device shadow-sm d-none d-md-block"></div>
-            <div class="product-device product-device-2 shadow-sm d-none
-              d-md-block">
-            </div>
-        </div>
-
-        <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
-            <div class="text-bg-dark me-md-3 pt-3 px-3 pt-md-5 px-md-5
-              text-center overflow-hidden">
-                <div class="my-3 py-3">
-                    <h2 class="display-5">Libros disponibles</h2>
-                    <p class="lead">Libro x</p>
-                </div>
-                <div class="bg-light shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
-                </div>
-            </div>
-           <%-- <div class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center
-              overflow-hidden">
-                <div class="my-3 p-3">
-                    <h2 class="display-5">Another headline</h2>
-                    <p class="lead">And an even wittier subheading.</p>
-                </div>
-                <div class="bg-dark shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
-                </div>
-            </div>
-        </div>--%>
-
-      <%--  <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
-            <div class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center
-              overflow-hidden">
-                <div class="my-3 p-3">
-                    <h2 class="display-5">Another headline</h2>
-                    <p class="lead">And an even wittier subheading.</p>
-                </div>
-                <div class="bg-dark shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
-                </div>
-            </div>--%>
-          <%--  <div class="text-bg-primary me-md-3 pt-3 px-3 pt-md-5 px-md-5
-              text-center overflow-hidden">
-                <div class="my-3 py-3">
-                    <h2 class="display-5">Another headline</h2>
-                    <p class="lead">And an even wittier subheading.</p>
-                </div>
-                <div class="bg-light shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
-                </div>
-            </div>
-        </div>--%>
-
-      <%--  <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
-            <div class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center
-              overflow-hidden">
-                <div class="my-3 p-3">
-                    <h2 class="display-5">Another headline</h2>
-                    <p class="lead">And an even wittier subheading.</p>
-                </div>
-                <div class="bg-body shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
-                </div>
-            </div>--%>
-          <%--  <div class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center
-              overflow-hidden">
-                <div class="my-3 py-3">
-                    <h2 class="display-5">Another headline</h2>
-                    <p class="lead">And an even wittier subheading.</p>
-                </div>
-                <div class="bg-body shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
-                </div>
-            </div>
-        </div>--%>
-
-        <%--<div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
-            <div class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center
-              overflow-hidden">
-                <div class="my-3 p-3">
-                    <h2 class="display-5">Another headline</h2>
-                    <p class="lead">And an even wittier subheading.</p>
-                </div>
-                <div class="bg-body shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
-                </div>
-            </div>--%>
-           <%-- <div class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center
-              overflow-hidden">
-                <div class="my-3 py-3">
-                    <h2 class="display-5">Another headline</h2>
-                    <p class="lead">And an even wittier subheading.</p>
-                </div>
-                <div class="bg-body shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
-          <%--      </div>--%>
-         <%--   </div>--%>
-        </div>
-    </main>
-
-    <footer class="container py-5">
-        <div class="row">
-            <div class="col-12 col-md">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                    fill="none" stroke="currentColor" stroke-linecap="round"
-                    stroke-linejoin="round" stroke-width="2" class="d-block mb-2"
-                    role="img" viewBox="0 0 24 24">
-                    <title>Product</title>
-                    <%--<circle
-                        cx="12" cy="12" r="10" />
-                    <path d="M14.31 8l5.74 9.94M9.69
-                    8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31
-                    16H2.83m13.79-4l-5.74 9.94" />--%>
-                </svg>
-                <small class="d-block mb-3 text-muted">&copy; ¡Gracias por preferirnos!</small>
-            </div>
-           <%-- <div class="col-6 col-md">
-                <h5>Features</h5>
-                <ul class="list-unstyled text-small">
-                    <li><a class="link-secondary" href="#">Cool stuff</a></li>
-                    <li><a class="link-secondary" href="#">Random feature</a></li>
-                    <li><a class="link-secondary" href="#">Team feature</a></li>
-                    <li><a class="link-secondary" href="#">Stuff for developers</a></li>
-                    <li><a class="link-secondary" href="#">Another one</a></li>
-                    <li><a class="link-secondary" href="#">Last time</a></li>
-                </ul>
-            </div>--%>
-        </div>
-    </footer>
 
 </body>
 
