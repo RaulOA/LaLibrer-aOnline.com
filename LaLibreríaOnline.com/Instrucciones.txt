@@ -1,0 +1,21 @@
+Instructions
+Se le solicita a usted como desarrollador web y base de datos, que implemente una herramienta web para la empresa Librería Internacional. 
+Como auge en los portales web de e-commerce donde los clientes pueden comprar en línea, 
+se quiere un sitio donde se logre aumentar las ventas y crear una competencia fuerte en las ventas digitales.
+ 
+Librería Internacional requiere un sitio web que:
+
+       Permita consultar los libros disponibles para comprar: ISBN, Foto, Titulo, Autor, Fecha de publicación del libro, Precio
+       Una opción para buscar un libro por ISBN o por Título.
+       Una opción para comprar un libro o varios libros en una misma factura, donde se captura la información
+
+Nombre
+Email
+País
+Estado (Provincia)
+Dirección de entrega
+Código Postal
+Número de tarjeta
+Fecha de Expiración
+Código de seguridad
+Se debe utilizar una base de datos SQL Server.

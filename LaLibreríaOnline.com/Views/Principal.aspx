@@ -39,6 +39,18 @@
     <!-- Template Javascript -->
     <script src="../Otros/js/main.js"></script>
 
+    <!-- Hace que todos los Cards que muestran los libros salgan de la misma altura -->
+    <style>
+        .card-header.product-img img {
+            height: 400px; /*Establecer la altura deseada*/
+            object-fit: cover; /*Ajustar la imagen dentro del contenedor*/
+        }
+
+        .card.product-item {
+            height: 100%; /*Establecer la altura deseada*/
+        }
+    </style>
+
 </head>
 
 <body>
@@ -230,31 +242,44 @@
                 <div class="text-center mb-4">
                     <h2 class="section-title px-5"><span class="px-2">Libros Disponibles</span></h2>
                 </div>
-                <div class="row px-xl-5 pb-3">
-                    <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+                <asp:Repeater ID="Card_Libro" runat="server">
+                    <HeaderTemplate>
+                        <div class="row px-xl-5 pb-3">
+                    </HeaderTemplate>
+                    <ItemTemplate>
                         <!-- Products Card -->
-                        <div class="card product-item border-0 mb-4">
-                            <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                                <img class="img-fluid w-100" src="../Imagenes/1.jpg" alt="">
-                            </div>
-                            <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                                <div class="text-center">9788445000074</div>
-                                <br />
-                                <h6 class="text-truncate mb-3">La Comunidad del Anillo</h6>
-                                <h5 class="text-truncate mb-3">J.R.R Tolkien</h5>
-                                <div class="d-flex justify-content-center">
-                                    <h6>$23.00</h6>
-                                    <h6 class="text-muted ml-2"><del>$45.00</del></h6>
+                        <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+                            <div class="card product-item border-0 mb-4">
+                                <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                                    <img class="img-fluid w-100" src="<%# Eval("foto")%>" alt="">
                                 </div>
-                            </div>
-                            <div class="card-footer d-flex justify-content-between bg-light border">
-                                <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-heart text-primary mr-1"></i>Favoritos</a>
-                                <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Añadir al Carrito</a>
+                                <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                                    <div class="text-center"><%# Eval("isbn")%></div>
+                                    <br />
+
+                                    <!--  <h4 class="text-truncate mb-3"><%# Eval("titulo")%></h4> -->
+                                    <h4 class="card-title" style="height: 3em; overflow: hidden; word-wrap: break-word;"><%# Eval("titulo")%></h4>
+
+                                    <h5 class="text-truncate mb-3"><%# Eval("autor")%></h5>
+                                    <h6 class="text-truncate mb-3">Publicado el: <%# Eval("fecha_De_Publicacion")%></h6>
+                                    <div class="d-flex justify-content-center">
+                                        <h6><%# Eval("precio")%></h6>
+                                        <%--<h6 class="text-muted ml-2"><del>$45.00</del></h6>--%>
+                                    </div>
+                                </div>
+                                <div class="card-footer d-flex justify-content-between bg-light border">
+                                    <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-heart text-primary mr-1"></i>Favoritos</a>
+                                    <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Añadir al Carrito</a>
+                                </div>
                             </div>
                         </div>
                         <!-- Products Card End-->
-                    </div>
-                </div>
+                    </ItemTemplate>
+                    <FooterTemplate>
+                        </div>
+                    </FooterTemplate>
+                </asp:Repeater>
+
             </div>
             <!-- Products End -->
 
