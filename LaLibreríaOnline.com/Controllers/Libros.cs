@@ -9,16 +9,20 @@ namespace LaLibreríaOnline.com.Controllers
 {
     public class Libros
     {
-        public List<m.Libro> Obtener_Libros()
+        public List<m.Libro> Obtener_Todos_Libros()
         {
-            return convertDsToList(new DatabaseHelper.DataBase().Obtener_Libros());
+            return Convertir_DataTable_A_Lista(new DatabaseHelper.DataBase().Obtener_Todos_Libros());
         }
-        public List<m.Libro> convertDsToList(DataTable ds)
+        public List<m.Libro> Obtener_Resultados_Busqueda(string busqueda)
         {
-            List<m.Libro> resortsList = new List<m.Libro>();
+            return Convertir_DataTable_A_Lista(new DatabaseHelper.DataBase().Obtener_Resultados_Busqueda(busqueda));
+        }
+        public List<m.Libro> Convertir_DataTable_A_Lista(DataTable ds)
+        {
+            List<m.Libro> Lista_De_Libros = new List<m.Libro>();
             foreach (DataRow row in ds.Rows)
             {
-                resortsList.Add(new m.Libro
+                Lista_De_Libros.Add(new m.Libro
                 {
                     isbn = row["isbn"].ToString(),
                     titulo = row["titulo"].ToString(),
@@ -28,8 +32,7 @@ namespace LaLibreríaOnline.com.Controllers
                     foto = row["foto"].ToString()
                 });
             }
-            return resortsList;
+            return Lista_De_Libros;
         }
-
     }
 }

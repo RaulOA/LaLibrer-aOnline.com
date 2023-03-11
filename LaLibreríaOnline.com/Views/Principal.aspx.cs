@@ -24,30 +24,33 @@ namespace LaLibreríaOnline.com
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-                Card_Libro.DataSource = new c.Libros().Obtener_Libros();
-                Card_Libro.DataBind();
-
-            }
             if (Session["loginInfo"] != null)
             {
                 // Si la sesión existe...
-                Session["FavoritosUsuario"] = new c.DatosDeUsuario().Traer_Favoritos_Usuario(Obtener_Id_Usuario());
-                Session["CarritoUsuario"] = new c.DatosDeUsuario().Traer_Carrito_Usuario(Obtener_Id_Usuario());
+                int idUsuario = Obtener_Id_Usuario();
+                Session["FavoritosUsuario"] = new c.DatosDeUsuario().Traer_Favoritos_Usuario(idUsuario);
+                Session["CarritoUsuario"] = new c.DatosDeUsuario().Traer_Carrito_Usuario(idUsuario);
                 spanFavoritos.InnerText = ((IEnumerable)Session["FavoritosUsuario"]).Cast<object>().Count().ToString();
-                //spanCarrito.InnerText = ((IEnumerable)Session["CarritoUsuario"]).Cast<object>().Count().ToString();
                 spanCarrito.InnerText = Obtener_Cantidad_Carrito().ToString();
-
                 navbarCollapse.Visible = false;
                 txt_Bienvenido.InnerText = $"Bienvenido {Obtener_Correo()}";
             }
             else
             {
                 // Si la sesión no existe...
-
                 Favoritos_Carrito.Visible = false;
                 txt_Bienvenido.Visible = false;
+            }
+
+            //if (Request.QueryString["busqueda"] == "true")
+            //{
+            //    Renderizar_Resultados_Busqueda(Request.QueryString["valor"]);
+            //    // Hacer algo con el valor capturado, como realizar una búsqueda en una base de datos.
+            //}
+
+            if (!IsPostBack)
+            {
+                Renderizar_Todos_Libros();
             }
         }
         protected void Agregar_Favorito_ServerClick(object sender, EventArgs e)
@@ -74,19 +77,34 @@ namespace LaLibreríaOnline.com
                 Mensaje_Sesion();
             }
         }
-        private int Obtener_Id_Usuario()
+        protected void Logo_ServerClick(object sender, EventArgs e)
+        {
+            Renderizar_Todos_Libros();
+            Response.Redirect("~/Views/Principal.aspx");
+        }
+        protected void Btn_Busqueda_ServerClick(object sender, EventArgs e)
+        {
+            Card_Libro.DataSource = new c.Libros().Obtener_Resultados_Busqueda(Input_Busqueda.Value);
+            Card_Libro.DataBind();
+        }
+        protected void Renderizar_Todos_Libros()
+        {
+            Card_Libro.DataSource = new c.Libros().Obtener_Todos_Libros();
+            Card_Libro.DataBind();
+        }
+        protected int Obtener_Id_Usuario()
         {
             return ((List<m.DatosUsuario>)Session["DatosUsuario"])[0].idUsuario;
         }
-        private string Obtener_Correo()
+        protected string Obtener_Correo()
         {
             return ((List<m.DatosUsuario>)Session["DatosUsuario"])[0].email;
         }
-        private string Obtener_Isbn(object sender)
+        protected string Obtener_Isbn(object sender)
         {
             return ((HtmlAnchor)sender).Attributes["data-isbn"];
         }
-        private int Obtener_Cantidad_Carrito()
+        protected int Obtener_Cantidad_Carrito()
         {
             int cantidadTotal = 0;
             var carrito = (IEnumerable<m.Libro>)Session["CarritoUsuario"];
@@ -96,10 +114,11 @@ namespace LaLibreríaOnline.com
             }
             return cantidadTotal;
         }
-        private void Mensaje_Sesion()
+        protected void Mensaje_Sesion()
         {
             string mensaje = "Debe iniciar sesión antes de realizar esta accion";
             ScriptManager.RegisterStartupScript(this, this.GetType(), "alerta", $"alert('{mensaje}');", true);
         }
+
     }
 }

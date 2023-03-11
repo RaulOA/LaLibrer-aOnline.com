@@ -12,9 +12,17 @@ namespace LaLibreríaOnline.com.DatabaseHelper
     public class DataBase
     {
         string cnn = "Data Source=localhost;Initial Catalog=Libreria;Integrated Security=True";
-        public DataTable Obtener_Libros()
+        public DataTable Obtener_Todos_Libros()
         {
-            return Ejecutar_Querry("[dbo].[ObtenerLibros]", null);
+            return Ejecutar_Querry("[dbo].[ObtenerLibros]", null, true);
+        }
+        public DataTable Obtener_Resultados_Busqueda(string busqueda)
+        {
+            List<SqlParameter> param = new List<SqlParameter>()
+            {
+                new SqlParameter("@busqueda", busqueda ),
+            };
+            return Ejecutar_Querry("[dbo].[ObtenerResultadosBusqueda]", param, true);
         }
         public DataTable Obtener_Datos_Usuario(string email)
         {
@@ -22,7 +30,7 @@ namespace LaLibreríaOnline.com.DatabaseHelper
             {
                 new SqlParameter("@email", email ),
             };
-            return Ejecutar_Querry("[dbo].[ObtenerDatosUsuario]", param);
+            return Ejecutar_Querry("[dbo].[ObtenerDatosUsuario]", param, true);
         }
         public DataTable Obtener_Favoritos_Usuario(int idUsuario)
         {
@@ -30,7 +38,7 @@ namespace LaLibreríaOnline.com.DatabaseHelper
             {
                 new SqlParameter("@idUsuario", idUsuario ),
             };
-            return Ejecutar_Querry("[dbo].[ObtenerFavoritosUsuario]", param);
+            return Ejecutar_Querry("[dbo].[ObtenerFavoritosUsuario]", param, true);
         }
         public DataTable Obtener_Carrito_Usuario(int idUsuario)
         {
@@ -38,7 +46,7 @@ namespace LaLibreríaOnline.com.DatabaseHelper
             {
                 new SqlParameter("@idUsuario", idUsuario ),
             };
-            return Ejecutar_Querry("[dbo].[ObtenerCarritoUsuario]", param);
+            return Ejecutar_Querry("[dbo].[ObtenerCarritoUsuario]", param, true);
         }
         public void Agregar_Favorito_BD(string isbn, int idUsuario)
         {
@@ -47,7 +55,7 @@ namespace LaLibreríaOnline.com.DatabaseHelper
                 new SqlParameter("@isbn", isbn ),
                 new SqlParameter("@idUsuario", idUsuario ),
             };
-            Ejecutar_Querry("[dbo].[AgregarFavorito]", param);
+            Ejecutar_Querry("[dbo].[AgregarFavorito]", param, false);
         }
         public void Agregar_Carrito_BD(string isbn, int idUsuario)
         {
@@ -57,9 +65,9 @@ namespace LaLibreríaOnline.com.DatabaseHelper
                 new SqlParameter("@idUsuario", idUsuario ),
                 new SqlParameter("@cantidad", 1 ),
             };
-            Ejecutar_Querry("[dbo].[AgregarCarrito]", param);
+            Ejecutar_Querry("[dbo].[AgregarCarrito]", param, false);
         }
-        public DataTable Ejecutar_Querry(string storedProcedure, List<SqlParameter> param)
+        public DataTable Ejecutar_Querry(string storedProcedure, List<SqlParameter> param, bool usar_adapter)
         {
             try
             {
@@ -78,8 +86,11 @@ namespace LaLibreríaOnline.com.DatabaseHelper
                         }
                     }
                     cmd.ExecuteNonQuery();
-                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                    adapter.Fill(ds);
+                    if (usar_adapter)
+                    {
+                        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                        adapter.Fill(ds);
+                    }
                 }
                 return ds;
             }

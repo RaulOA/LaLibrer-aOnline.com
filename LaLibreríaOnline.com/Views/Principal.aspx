@@ -97,16 +97,17 @@
                         </a>
                     </div>
                     <div class="col-lg-6 col-6 text-left">
-                        <form action="">
+
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Buscar Libro">
+                                <input id="Input_Busqueda" runat="server" type="text" class="form-control" placeholder="Buscar por ISBN, Autor o Titulo"/>
                                 <div class="input-group-append">
-                                    <span class="input-group-text bg-transparent text-primary">
+                                    <button id="Btn_Busqueda" runat="server" onserverclick="Btn_Busqueda_ServerClick" class="input-group-text bg-transparent text-primary">
                                         <i class="fa fa-search"></i>
-                                    </span>
+                                    </button>
                                 </div>
                             </div>
-                        </form>
+                       
+
                     </div>
                     <div runat="server" id="Favoritos_Carrito" class="col-lg-3 col-6 text-right">
                         <a href="" class="btn border">
@@ -127,7 +128,7 @@
                 <div class="row border-top px-xl-5">
                     <div class="col">
                         <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
-                            <a href="" class="text-decoration-none d-block d-lg-none">
+                            <a runat="server" id="Logo" onserverclick="Logo_ServerClick" href="" class="text-decoration-none d-block d-lg-none">
                                 <h1 class="m-0 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border px-3 mr-1">La</span>Libreria</h1>
                             </a>
                             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
