@@ -1,0 +1,1 @@
+DELETE FROM nombre_de_la_tabla;

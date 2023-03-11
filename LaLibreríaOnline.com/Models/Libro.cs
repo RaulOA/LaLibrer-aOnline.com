@@ -10,9 +10,9 @@ namespace LaLibreríaOnline.com.Models
         public string isbn { get; set; }
         public string titulo { get; set; }
         public string autor { get; set; }
-        public string fecha_De_Publicacion { get; set; }
+        public string fechaPublicacion { get; set; }
         public decimal precio { get; set; }
         public string foto { get; set; }
-
+        public int cantidad { get; set; }
     }
 }

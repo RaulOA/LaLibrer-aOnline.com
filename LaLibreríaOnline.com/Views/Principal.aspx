@@ -108,14 +108,14 @@
                             </div>
                         </form>
                     </div>
-                    <div class="col-lg-3 col-6 text-right">
+                    <div runat="server" id="Favoritos_Carrito" class="col-lg-3 col-6 text-right">
                         <a href="" class="btn border">
                             <i class="fas fa-heart text-primary"></i>
-                            <span class="badge">0</span>
+                            <span runat="server" id="spanFavoritos" class="badge"></span>
                         </a>
                         <a href="" class="btn border">
                             <i class="fas fa-shopping-cart text-primary"></i>
-                            <span class="badge">0</span>
+                            <span runat="server" id="spanCarrito" class="badge"></span>
                         </a>
                     </div>
                 </div>
@@ -133,10 +133,13 @@
                             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                                 <span class="navbar-toggler-icon"></span>
                             </button>
-                            <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                            <br />
+                            <div runat="server" id="txt_Bienvenido"></div>
+                            <br />
+                            <div runat="server" class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                                 <div class="navbar-nav ml-auto py-0">
-                                    <a href="" class="nav-item nav-link">Login</a>
-                                    <a href="" class="nav-item nav-link">Regirstate</a>
+                                    <a href="Login.aspx" class="nav-item nav-link">Login</a>
+                                    <a href="Registro.aspx" class="nav-item nav-link">Registrate</a>
                                 </div>
                             </div>
                         </nav>
@@ -256,20 +259,16 @@
                                 <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
                                     <div class="text-center"><%# Eval("isbn")%></div>
                                     <br />
-
-                                    <!--  <h4 class="text-truncate mb-3"><%# Eval("titulo")%></h4> -->
                                     <h4 class="card-title" style="height: 3em; overflow: hidden; word-wrap: break-word;"><%# Eval("titulo")%></h4>
-
                                     <h5 class="text-truncate mb-3"><%# Eval("autor")%></h5>
-                                    <h6 class="text-truncate mb-3">Publicado el: <%# Eval("fecha_De_Publicacion")%></h6>
+                                    <h6 class="text-truncate mb-3">Publicado el: <%# Eval("fechaPublicacion")%></h6>
                                     <div class="d-flex justify-content-center">
-                                        <h6><%# Eval("precio")%></h6>
-                                        <%--<h6 class="text-muted ml-2"><del>$45.00</del></h6>--%>
+                                        <h6>$<%# Eval("precio")%></h6>
                                     </div>
                                 </div>
-                                <div class="card-footer d-flex justify-content-between bg-light border">
-                                    <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-heart text-primary mr-1"></i>Favoritos</a>
-                                    <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Añadir al Carrito</a>
+                                <div runat="server" id="Botones_Libros" class="card-footer d-flex justify-content-between bg-light border">
+                                    <a runat="server" id="Agregar_Favorito" href="#" onserverclick="Agregar_Favorito_ServerClick" class="btn btn-sm text-dark p-0" data-isbn='<%# Eval("isbn") %>'><i class="fas fa-heart text-primary mr-1"></i>Favoritos </a>
+                                    <a runat="server" id="Agregar_Carrito" href="#" onserverclick="Agregar_Carrito_ServerClick" class="btn btn-sm text-dark p-0" data-isbn='<%# Eval("isbn") %>'><i class="fas fa-shopping-cart text-primary mr-1"></i>Añadir al Carrito </a>
                                 </div>
                             </div>
                         </div>

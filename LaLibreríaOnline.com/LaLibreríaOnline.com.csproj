@@ -70,7 +70,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DatabaseHelper\1. ObtenerLibros.sql" />
+    <Content Include="DatabaseHelper\StoredProcedures\1. ObtenerLibros.sql" />
+    <Content Include="DatabaseHelper\StoredProcedures\2. ObtenerDatosUsuario.sql" />
+    <Content Include="DatabaseHelper\StoredProcedures\3. ObtenerFavoritosUsuario.sql" />
+    <Content Include="DatabaseHelper\StoredProcedures\4. ObtenerCarritoUsuario.sql" />
+    <Content Include="DatabaseHelper\StoredProcedures\6. AgregarCarrito.sql" />
+    <Content Include="DatabaseHelper\StoredProcedures\5. AgregarFavorito.sql" />
+    <Content Include="DatabaseHelper\StoredProcedures\A. Comandos Basicos.sql" />
     <Content Include="Imagenes\1.jpg" />
     <Content Include="Imagenes\10.jpg" />
     <Content Include="Imagenes\11.jpg" />
@@ -152,10 +158,14 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\DatosDeUsuario.cs" />
+    <Compile Include="Controllers\Guardar en BD.cs" />
     <Compile Include="Controllers\Libros.cs" />
     <Compile Include="Controllers\Login.cs" />
     <Compile Include="Controllers\Registro.cs" />
     <Compile Include="DatabaseHelper\DataBase.cs" />
+    <Compile Include="Models\DatosUsuario.cs" />
+    <Compile Include="Models\FavoritoCarrito.cs" />
     <Compile Include="Models\Libro.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -283,9 +293,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DatabaseHelper\StoredProcedures\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
