@@ -41,13 +41,6 @@ namespace LaLibreríaOnline.com
                 Favoritos_Carrito.Visible = false;
                 txt_Bienvenido.Visible = false;
             }
-
-            //if (Request.QueryString["busqueda"] == "true")
-            //{
-            //    Renderizar_Resultados_Busqueda(Request.QueryString["valor"]);
-            //    // Hacer algo con el valor capturado, como realizar una búsqueda en una base de datos.
-            //}
-
             if (!IsPostBack)
             {
                 Renderizar_Todos_Libros();
@@ -77,20 +70,39 @@ namespace LaLibreríaOnline.com
                 Mensaje_Sesion();
             }
         }
-        protected void Logo_ServerClick(object sender, EventArgs e)
-        {
-            Renderizar_Todos_Libros();
-            Response.Redirect("~/Views/Principal.aspx");
-        }
+        //protected void Logo_ServerClick(object sender, EventArgs e)
+        //{
+        //    Renderizar_Todos_Libros();
+        //    Response.Redirect("~/Views/Principal.aspx");
+        //}
         protected void Btn_Busqueda_ServerClick(object sender, EventArgs e)
         {
             Card_Libro.DataSource = new c.Libros().Obtener_Resultados_Busqueda(Input_Busqueda.Value);
             Card_Libro.DataBind();
+            Titulo_Libros.InnerHtml = "Resultados de Busqueda";
+        }
+        protected void btn_Favoritos_ServerClick(object sender, EventArgs e)
+        {
+            if (HttpContext.Current.Session["loginInfo"] != null)
+            {
+                Card_Libro.DataSource = (List<m.Libro>)Session["FavoritosUsuario"];
+                Card_Libro.DataBind();
+                Titulo_Libros.InnerHtml = "Mis Favoritos";
+            }
+            else
+            {
+                Mensaje_Sesion();
+            }
+        }
+        protected void btn_Carrito_ServerClick(object sender, EventArgs e)
+        {
+
         }
         protected void Renderizar_Todos_Libros()
         {
             Card_Libro.DataSource = new c.Libros().Obtener_Todos_Libros();
             Card_Libro.DataBind();
+            Titulo_Libros.InnerHtml = "Libros Disponibles";
         }
         protected int Obtener_Id_Usuario()
         {
@@ -119,6 +131,5 @@ namespace LaLibreríaOnline.com
             string mensaje = "Debe iniciar sesión antes de realizar esta accion";
             ScriptManager.RegisterStartupScript(this, this.GetType(), "alerta", $"alert('{mensaje}');", true);
         }
-
     }
 }

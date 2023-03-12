@@ -51,6 +51,15 @@ namespace LaLibreríaOnline.com
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Favoritos_Carrito;
 
         /// <summary>
+        /// Control btn_Favoritos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor btn_Favoritos;
+
+        /// <summary>
         /// Control spanFavoritos.
         /// </summary>
         /// <remarks>
@@ -60,6 +69,15 @@ namespace LaLibreríaOnline.com
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl spanFavoritos;
 
         /// <summary>
+        /// Control btn_Carrito.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor btn_Carrito;
+
+        /// <summary>
         /// Control spanCarrito.
         /// </summary>
         /// <remarks>
@@ -67,15 +85,6 @@ namespace LaLibreríaOnline.com
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl spanCarrito;
-
-        /// <summary>
-        /// Control Logo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor Logo;
 
         /// <summary>
         /// Control txt_Bienvenido.
@@ -94,6 +103,15 @@ namespace LaLibreríaOnline.com
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl navbarCollapse;
+
+        /// <summary>
+        /// Control Titulo_Libros.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Titulo_Libros;
 
         /// <summary>
         /// Control Card_Libro.
