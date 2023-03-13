@@ -11,7 +11,7 @@ namespace LaLibreríaOnline.com.DatabaseHelper
 {
     public class DataBase
     {
-        string cnn = "Data Source=localhost;Initial Catalog=Libreria;Integrated Security=True";
+        string cnn = "Data Source=DESKTOP-5DRNVDJ\\MSSQLSERVER01;Initial Catalog=Libreria;Integrated Security=True";
         public DataTable Obtener_Todos_Libros()
         {
             return Ejecutar_Querry("[dbo].[ObtenerLibros]", null, true);

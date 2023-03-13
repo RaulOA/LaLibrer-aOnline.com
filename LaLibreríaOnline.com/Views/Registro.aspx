@@ -71,19 +71,73 @@
             </div>
         </header>
         <main class="px-3">
+            <br />
             <h1>Nueva Cuenta</h1>
             <br />
             <!-- Esta es la parte donde se debe poner un nombre y una contraseña -->
             <form id="FormSignIn" runat="server">
                 <div class="input-group mb-3" style="max-width: 400px; margin: 0 auto; padding: 0 10px;">
                     <span class="input-group-text" id="basic-addon1">Usuario</span>
-                    <input id="InputUser" runat="server" type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" />
+                    <input id="InputUser" runat="server" type="text" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1" />
                 </div>
                 <br />
+
                 <div class="input-group mb-3" style="max-width: 400px; margin: 0 auto; padding: 0 10px;">
                     <span class="input-group-text" id="basic-addon2">Contraseña</span>
                     <input id="InputPass" runat="server" type="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon2" />
                 </div>
+                <br />
+                <br />
+
+                <div class="input-group mb-3" style="max-width: 400px; margin: 0 auto; padding: 0 10px;">
+                    <span class="input-group-text" id="basic-addon3">Nombre Completo</span> 
+                    <input id="InputFullName" runat="server" type="text" class="form-control" placeholder="Full Name" aria-label="Full Name" aria-describedby="basic-addon3" />
+                </div>
+                <br />
+
+                <div class="input-group mb-3" style="max-width: 400px; margin: 0 auto; padding: 0 10px;">
+                    <span class="input-group-text" id="basic-addon4">País</span>
+                    <input id="InputCountry" runat="server" type="text" class="form-control" placeholder="Country" aria-label="Country" aria-describedby="basic-addon5" />
+                </div>
+                <br />
+
+                <div class="input-group mb-3" style="max-width: 400px; margin: 0 auto; padding: 0 10px;">
+                    <span class="input-group-text" id="basic-addon5">Provincia</span>
+                    <input id="InputProvince" runat="server" type="text" class="form-control" placeholder="Province" aria-label="Province" aria-describedby="basic-addon6" />
+                </div>
+                <br />
+
+                <div class="input-group mb-3" style="max-width: 400px; margin: 0 auto; padding: 0 10px;">
+                    <span class="input-group-text" id="basic-addon6">Dirección</span>
+                    <input id="InputAddress" runat="server" type="text" class="form-control" placeholder="Address" aria-label="Address" aria-describedby="basic-addon7" />
+                </div>
+                <br />
+
+
+                <div class="input-group mb-3" style="max-width: 400px; margin: 0 auto; padding: 0 10px;">
+                    <span class="input-group-text" id="basic-addon7">Código Postal</span>
+                    <input id="InputPostalCode" runat="server" type="number" class="form-control" placeholder="Postal Code" aria-label="Postal Code" aria-describedby="basic-addon8" />
+                </div>
+                <br />
+
+                <div class="input-group mb-3" style="max-width: 400px; margin: 0 auto; padding: 0 10px;">
+                    <span class="input-group-text" id="basic-addon8">Número de Tarjeta</span>
+                    <input id="InputCardNumber" runat="server" type="number" class="form-control" placeholder="Card Number" aria-label="Card Number" aria-describedby="basic-addon9" />
+                </div>
+                <br />
+
+                 <div class="input-group mb-3" style="max-width: 400px; margin: 0 auto; padding: 0 10px;">
+                    <span class="input-group-text" id="basic-addon9">Expiración</span>
+                    <input id="InputExpiration" runat="server" type="date" class="form-control" placeholder="Expiration" aria-label="Expiration" aria-describedby="basic-addon10" />
+                </div>
+                <br />
+
+                
+                 <div class="input-group mb-3" style="max-width: 400px; margin: 0 auto; padding: 0 10px;">
+                    <span class="input-group-text" id="basic-addon10">Código de seguridad</span>
+                    <input id="InputSecurityCode" runat="server" type="number" class="form-control" placeholder="Security Code" aria-label="Security Code" aria-describedby="basic-addon11" />
+                </div>
+               
                 <br />
                 <p class="lead">
                     <button id="BtnSignIn" runat="server" onserverclick="BtnSignIn_ServerClick" class="btn btn-primary btn-lg px-4 gap-3">Registrarse</button>
