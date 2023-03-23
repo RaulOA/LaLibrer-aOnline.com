@@ -77,6 +77,7 @@
     <Content Include="DatabaseHelper\StoredProcedures\6. AgregarCarrito.sql" />
     <Content Include="DatabaseHelper\StoredProcedures\5. AgregarFavorito.sql" />
     <Content Include="DatabaseHelper\StoredProcedures\7. ObtenerResultadosBusqueda.sql" />
+    <Content Include="DatabaseHelper\StoredProcedures\8. DatosUsuarios.sql" />
     <Content Include="DatabaseHelper\StoredProcedures\A. Comandos Basicos.sql" />
     <Content Include="Imagenes\1.jpg" />
     <Content Include="Imagenes\10.jpg" />
