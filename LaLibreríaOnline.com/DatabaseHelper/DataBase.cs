@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Web;
 using m = LaLibreríaOnline.com.Models;
 
@@ -12,6 +13,12 @@ namespace LaLibreríaOnline.com.DatabaseHelper
     public class DataBase
     {
         string cnn = "Data Source=DESKTOP-5DRNVDJ\\MSSQLSERVER01;Initial Catalog=Libreria;Integrated Security=True";
+
+        //public DataTable DatosUsuarios()
+        //{
+        // return  Ejecutar_Querry("[dbo].[DatosUsuarios]", null, true);
+        //}
+ 
         public DataTable Obtener_Todos_Libros()
         {
             return Ejecutar_Querry("[dbo].[ObtenerLibros]", null, true);
