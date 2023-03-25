@@ -74,8 +74,9 @@
             <br />
             <h1>Nueva Cuenta</h1>
             <br />
-            <!-- Esta es la parte donde se debe poner un nombre y una contraseña -->
+            <!-- Esta es la parte donde se deben poner los datos -->
             <form id="FormSignIn" runat="server">
+
                 <div class="input-group mb-3" style="max-width: 400px; margin: 0 auto; padding: 0 10px;">
                     <span class="input-group-text" id="basic-addon1">Usuario</span>
                     <input id="InputUser" runat="server" type="text" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1" />

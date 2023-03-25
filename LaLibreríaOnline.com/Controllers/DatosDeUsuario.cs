@@ -11,10 +11,6 @@ namespace LaLibreríaOnline.com.Controllers
     {
         // Traer datos del usuario
 
-        //public List<m.DatosUsuario> DatosUsuarios(DataTable ds)
-        //{
-
-        //}
         public List<m.DatosUsuario> Traer_Datos_Usuario(String email)
         {
             return Convertir_Datos(new DatabaseHelper.DataBase().Obtener_Datos_Usuario(email));
