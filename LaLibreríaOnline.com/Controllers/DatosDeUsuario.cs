@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Web;
+using System.Web; 
 using m = LaLibreríaOnline.com.Models;
 
 namespace LaLibreríaOnline.com.Controllers
@@ -15,6 +15,7 @@ namespace LaLibreríaOnline.com.Controllers
         {
             return Convertir_Datos(new DatabaseHelper.DataBase().Obtener_Datos_Usuario(email));
         }
+
         public List<m.DatosUsuario> Convertir_Datos(DataTable ds)
         {
             List<m.DatosUsuario> datosUsuario = new List<m.DatosUsuario>();
@@ -36,6 +37,7 @@ namespace LaLibreríaOnline.com.Controllers
             }
             return datosUsuario;
         }
+
         // Traer favoritos del usuario
         public List<m.Libro> Traer_Favoritos_Usuario(int idUsuario)
         {

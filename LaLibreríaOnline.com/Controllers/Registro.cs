@@ -2,16 +2,24 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
 using System.Web;
+using db = LaLibreríaOnline.com.DatabaseHelper;
 
 namespace LaLibreríaOnline.com.Controllers
 {
     public class Registro
     {
+
+        public void GuardarUsuarios(List<DatosUsuario> datosUsuario)
+        {
+            new db.DataBase().GuardarUsuarios(datosUsuario);
+        }
+
         public LoginResponsePayload signUpWithPassword(String usuario, String contrasena)
         {
             var api = "AIzaSyCKIEzDbx3YWDPsC6wWwOKDaiHObhJVOrc";

@@ -129,7 +129,7 @@
 
                  <div class="input-group mb-3" style="max-width: 400px; margin: 0 auto; padding: 0 10px;">
                     <span class="input-group-text" id="basic-addon9">Expiración</span>
-                    <input id="InputExpiration" runat="server" type="date" class="form-control" placeholder="Expiration" aria-label="Expiration" aria-describedby="basic-addon10" />
+                    <input id="InputExpiration" runat="server" type="text" class="form-control" placeholder="Expiration" aria-label="Expiration" aria-describedby="basic-addon10" />
                 </div>
                 <br />
 

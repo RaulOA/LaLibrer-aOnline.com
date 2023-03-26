@@ -3,7 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.Web.UI;
 using m = LaLibreríaOnline.com.Models;
+using c = LaLibreríaOnline.com.Controllers;
 using RegisterController = LaLibreríaOnline.com.Controllers;
+using System.Web.WebSockets;
+using LaLibreríaOnline.com.Controllers;
 
 namespace LaLibreríaOnline.com.Views
 {
@@ -31,11 +34,13 @@ namespace LaLibreríaOnline.com.Views
                 numeroTarjeta = InputCardNumber.Value,
                 expiracion= InputExpiration.Value,
                 codigoSeguridad= InputSecurityCode.Value,
-
             });
+
+            new c.Registro().GuardarUsuarios(datosUsuario);
         }
-            
        
+
+
         protected void BtnSignIn_ServerClick(object sender, EventArgs e)
             
             {
@@ -49,7 +54,8 @@ namespace LaLibreríaOnline.com.Views
             }
             else if (registerInfo.registered)
             {
-                Response.Redirect("~/Views/Principal.aspx");
+                Usuarios();
+                Response.Redirect("~/View/Login.aspx");
             }
         }
     }

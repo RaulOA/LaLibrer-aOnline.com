@@ -14,11 +14,38 @@ namespace LaLibreríaOnline.com.DatabaseHelper
     {
         string cnn = "Data Source=DESKTOP-5DRNVDJ\\MSSQLSERVER01;Initial Catalog=Libreria;Integrated Security=True";
 
-        //public DataTable DatosUsuarios()
-        //{
-        // return  Ejecutar_Querry("[dbo].[DatosUsuarios]", null, true);
-        //}
- 
+       
+        public void GuardarUsuarios(List<DatosUsuario> datosUsuario)
+        {
+            string connectionString = "Data Source=DESKTOP-5DRNVDJ\\MSSQLSERVER01;Initial Catalog=Libreria;User ID=myUsername;Password=myPassword;";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                //connection.Open();
+                
+                string query = "INSERT INTO Usuarios (email, nombre, pais, provincia, direccion, codigoPostal, numeroTarjeta, expiracion, codigoSeguridad) VALUES (@Email, @Nombre, @Pais, @Provincia, @Direccion, @CodigoPostal, @NumeroTarjeta, @Expiracion, @CodigoSeguridad)";
+                SqlCommand command = new SqlCommand(query, connection);
+
+                List<SqlParameter> param = new List<SqlParameter>() {
+
+                    new SqlParameter("@Email", datosUsuario[0].email),
+                    new SqlParameter("@Nombre", datosUsuario[0].nombre),
+                    new SqlParameter("@Pais", datosUsuario[0].pais),
+                    new SqlParameter("@Provincia", datosUsuario[0].provincia),
+                    new SqlParameter("@Direccion", datosUsuario[0].direccion),
+                    new SqlParameter("@CodigoPostal", datosUsuario[0].codigoPostal),
+                    new SqlParameter("@NumeroTarjeta", datosUsuario[0].numeroTarjeta),
+                    new SqlParameter("@Expiracion", datosUsuario[0].expiracion),
+                    new SqlParameter("@CodigoSeguridad", datosUsuario[0].codigoSeguridad),
+
+                }; 
+
+                Ejecutar_Querry("[dbo].[DatosUsuarios]", param, false);
+               
+                //connection.Close();
+            }
+        }
+
         public DataTable Obtener_Todos_Libros()
         {
             return Ejecutar_Querry("[dbo].[ObtenerLibros]", null, true);
