@@ -1,61 +1,48 @@
-﻿using LaLibreríaOnline.com.Models;
+﻿using LaLibreríaOnline.com.Controllers;
+using LaLibreríaOnline.com.Models;
 using System;
 using System.Collections.Generic;
 using System.Web.UI;
-using m = LaLibreríaOnline.com.Models;
-using c = LaLibreríaOnline.com.Controllers;
-using RegisterController = LaLibreríaOnline.com.Controllers;
-using System.Web.WebSockets;
-using LaLibreríaOnline.com.Controllers;
 
 namespace LaLibreríaOnline.com.Views
 {
-    public partial class Registro : System.Web.UI.Page
+    public partial class Registro : Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
-
-        protected void Usuarios()
+        protected void SaveUserRegistrationData()
         {
-
-            List<m.DatosUsuario> datosUsuario = new List<m.DatosUsuario>();
-
-            datosUsuario.Add(new m.DatosUsuario 
+            List<UserData> userData = new List<UserData>
             {
-
-                email = InputUser.Value,
-                nombre = InputFullName.Value,
-                pais = InputCountry.Value,
-                provincia = InputProvince.Value,
-                direccion = InputAddress.Value,
-                codigoPostal = InputPostalCode.Value,
-                numeroTarjeta = InputCardNumber.Value,
-                expiracion= InputExpiration.Value,
-                codigoSeguridad= InputSecurityCode.Value,
-            });
-
-            new c.Registro().GuardarUsuarios(datosUsuario);
+                new UserData
+                {
+                    userId = new Random().Next(1, 999999999),
+                    email = InputUser.Value,
+                    name = InputFullName.Value,
+                    country = InputCountry.Value,
+                    province = InputProvince.Value,
+                    address = InputAddress.Value,
+                    postalCode = InputPostalCode.Value,
+                    cardNumber = InputCardNumber.Value,
+                    expirationDate = InputExpiration.Value,
+                    securityCode = InputSecurityCode.Value,
+                }
+            };
+            new DatabaseActionsController().SaveUserController(userData);
         }
-       
-
-
         protected void BtnSignIn_ServerClick(object sender, EventArgs e)
-            
-            {
-            RegisterController.Registro register = new RegisterController.Registro();
-            LoginResponsePayload registerInfo = register.signUpWithPassword(InputUser.Value, InputPass.Value);
-
+        {
+            ResponsePayload registerInfo = new LogInAndSignInController().SendSignInSignUpRequest(InputUser.Value, InputPass.Value, false);
             if (registerInfo == null)
             {
-                string mensaje = $"alert('Datos Incorrectos')";
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "mensaje", mensaje, true);
+                string message = $"alert('Error de Registro en Firebase')";
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "mensaje", message, true);
             }
-            else if (registerInfo.registered)
+            else
             {
-                Usuarios();
-                Response.Redirect("~/View/Login.aspx");
+                SaveUserRegistrationData();
+                Response.Redirect("~/Views/Login.aspx");
             }
         }
     }

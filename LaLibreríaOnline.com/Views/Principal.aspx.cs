@@ -1,5 +1,4 @@
-﻿using LaLibreríaOnline.com.Models;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,12 +6,12 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
-using c = LaLibreríaOnline.com.Controllers;
-using m = LaLibreríaOnline.com.Models;
+using LaLibreríaOnline.com.Controllers;
+using LaLibreríaOnline.com.Models;
 
 namespace LaLibreríaOnline.com
 {
-    public partial class Principal : System.Web.UI.Page
+    public partial class Principal : Page
     {
         //  El método Page_Load se ejecuta cada vez que se carga la página. Primero se comprueba si la página
         //  se está cargando por primera vez, en cuyo caso se cargan los datos de los libros.
@@ -20,20 +19,22 @@ namespace LaLibreríaOnline.com
         //  usuario y se muestran los contadores de estos elementos en la página. Finalmente, si no hay una sesión iniciada,
         //  se ocultan los controles correspondientes en la página.
 
-        // Se necesitan hacer mejoras en el pageload ya que este esta haciendo demasiadas cosas
+        public int userId { get; set; }
+        public string userEmail { get; set; }
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["loginInfo"] != null)
             {
                 // Si la sesión existe...
-                int idUsuario = Obtener_Id_Usuario();
-                Session["FavoritosUsuario"] = new c.DatosDeUsuario().Traer_Favoritos_Usuario(idUsuario);
-                Session["CarritoUsuario"] = new c.DatosDeUsuario().Traer_Carrito_Usuario(idUsuario);
-                spanFavoritos.InnerText = ((IEnumerable)Session["FavoritosUsuario"]).Cast<object>().Count().ToString();
-                spanCarrito.InnerText = Obtener_Cantidad_Carrito().ToString();
+                userId = new SessionController().GetUserId((List<UserData>)Session["userData"]);
+                userEmail = new SessionController().GetUserEmail((List<UserData>)Session["userData"]);
+                Session["favorites"] = new DatabaseActionsController().GetFavoritesController(userId);
+                Session["cart"] = new DatabaseActionsController().GetCartItemsController(userId);
+                spanFavoritos.InnerText = ((IEnumerable)Session["favorites"]).Cast<object>().Count().ToString();
+                spanCarrito.InnerText = GetCartAmount().ToString();
                 navbarCollapse.Visible = false;
-                txt_Bienvenido.InnerText = $"Bienvenido {Obtener_Correo()}";
+                txt_Bienvenido.InnerText = $"Bienvenido {userEmail}";
             }
             else
             {
@@ -41,43 +42,50 @@ namespace LaLibreríaOnline.com
                 Favoritos_Carrito.Visible = false;
                 txt_Bienvenido.Visible = false;
             }
-            if (!IsPostBack)
-            {
-                Renderizar_Todos_Libros();
-            }
+            RenderAllBooks();
         }
         protected void Agregar_Favorito_ServerClick(object sender, EventArgs e)
         {
             if (HttpContext.Current.Session["loginInfo"] != null)
             {
-                new c.Guardar_en_BD().Agregar_Favorito_BD(Obtener_Isbn(sender), Obtener_Id_Usuario());
+                new DatabaseActionsController().AddFavoriteController(GetBookIsbn(sender), userId);
                 Response.Redirect("~/Views/Principal.aspx");
             }
             else
             {
-                Mensaje_Sesion();
+                Message("Debe iniciar sesión antes de agregar un favorito");
             }
+        }
+        protected void Eliminar_Favorito_ServerClick(object sender, EventArgs e)
+        {
+            new DatabaseActionsController().DeleteFavoriteController(GetBookIsbn(sender), userId);
+            Message("Libro eliminado de favoritos");
         }
         protected void Agregar_Carrito_ServerClick(object sender, EventArgs e)
         {
+            // Verifica si la sesión "loginInfo" es diferente de nulo
             if (HttpContext.Current.Session["loginInfo"] != null)
             {
-                new c.Guardar_en_BD().Agregar_Carrito_BD(Obtener_Isbn(sender), Obtener_Id_Usuario());
+                // Si la sesión "loginInfo" no es nula, llama al método "Agregar_Carrito_BD"
+                // de la clase "Guardar_en_BD" y le pasa como argumentos el ISBN del libro
+                // y el ID del usuario obtenidos mediante los métodos "Obtener_Isbn" y 
+                // "Obtener_Id_Usuario", respectivamente, a través del parámetro "sender".
+
+                new DatabaseActionsController().AddToCartCntroller(GetBookIsbn(sender), userId);
+
+                // Redirige al usuario a la página "Principal.aspx"
                 Response.Redirect("~/Views/Principal.aspx");
             }
             else
             {
-                Mensaje_Sesion();
+                // Si la sesión "loginInfo" es nula, llama al método "Mensaje_Sesion"
+                // que muestra un mensaje de error al usuario.
+                Message("Debe iniciar sesión antes de agregar algo a su carrito");
             }
         }
-        //protected void Logo_ServerClick(object sender, EventArgs e)
-        //{
-        //    Renderizar_Todos_Libros();
-        //    Response.Redirect("~/Views/Principal.aspx");
-        //}
         protected void Btn_Busqueda_ServerClick(object sender, EventArgs e)
         {
-            Card_Libro.DataSource = new c.Libros().Obtener_Resultados_Busqueda(Input_Busqueda.Value);
+            Card_Libro.DataSource = new DatabaseActionsController().GetSearchResultsController(Input_Busqueda.Value);
             Card_Libro.DataBind();
             Titulo_Libros.InnerHtml = "Resultados de Busqueda";
         }
@@ -85,50 +93,66 @@ namespace LaLibreríaOnline.com
         {
             if (HttpContext.Current.Session["loginInfo"] != null)
             {
-                Card_Libro.DataSource = (List<m.Libro>)Session["FavoritosUsuario"];
+                Card_Libro.DataSource = (List<Book>)Session["favorites"];
                 Card_Libro.DataBind();
                 Titulo_Libros.InnerHtml = "Mis Favoritos";
             }
             else
             {
-                Mensaje_Sesion();
+                Message("Debe iniciar sesión antes de poder mostrar sus favoritos");
             }
         }
         protected void btn_Carrito_ServerClick(object sender, EventArgs e)
         {
-
+            Response.Redirect("~/Views/Cart.aspx");
         }
-        protected void Renderizar_Todos_Libros()
+        protected void RenderAllBooks()
         {
-            Card_Libro.DataSource = new c.Libros().Obtener_Todos_Libros();
+            // Se obtienen todos los libros disponibles
+            List<Book> books = new DatabaseActionsController().GetAllBooksController();
+
+            // Se verifica si hay un usuario logueado
+            if (Session["loginInfo"] != null)
+            {
+                // Se convierte la lista de favoritos del usuario en un diccionario con clave ISBN y valor Libro
+                Dictionary<string, Book> favorites = ((List<Book>)Session["favorites"]).ToDictionary(l => l.isbn);
+
+                // Se recorre cada libro de la lista de todos los libros
+                foreach (Book book in books)
+                {
+                    // Se verifica si el libro está en la lista de favoritos del usuario
+                    if (favorites.ContainsKey(book.isbn))
+                    {
+                        // Se cambia la propiedad esFavorito del libro a true
+                        book.isFavorite = true;
+                    }
+                }
+            }
+
+            // Se asigna la lista de libros al control Card_Libro y se renderiza en la página
+            Card_Libro.DataSource = books;
             Card_Libro.DataBind();
+
+            // Se asigna un título al control Titulo_Libros
             Titulo_Libros.InnerHtml = "Libros Disponibles";
         }
-        protected int Obtener_Id_Usuario()
-        {
-            return ((List<m.DatosUsuario>)Session["DatosUsuario"])[0].idUsuario;
-        }
-        protected string Obtener_Correo()
-        {
-            return ((List<m.DatosUsuario>)Session["DatosUsuario"])[0].email;
-        }
-        protected string Obtener_Isbn(object sender)
+
+        protected string GetBookIsbn(object sender)
         {
             return ((HtmlAnchor)sender).Attributes["data-isbn"];
         }
-        protected int Obtener_Cantidad_Carrito()
+        protected int GetCartAmount()
         {
-            int cantidadTotal = 0;
-            var carrito = (IEnumerable<m.Libro>)Session["CarritoUsuario"];
-            if (carrito != null)
+            int amount = 0;
+            var cart = (IEnumerable<Book>)Session["cart"];
+            if (cart != null)
             {
-                cantidadTotal = carrito.Sum(l => l.cantidad);
+                amount = cart.Sum(i => i.amount);
             }
-            return cantidadTotal;
+            return amount;
         }
-        protected void Mensaje_Sesion()
+        protected void Message(string mensaje)
         {
-            string mensaje = "Debe iniciar sesión antes de realizar esta accion";
             ScriptManager.RegisterStartupScript(this, this.GetType(), "alerta", $"alert('{mensaje}');", true);
         }
     }

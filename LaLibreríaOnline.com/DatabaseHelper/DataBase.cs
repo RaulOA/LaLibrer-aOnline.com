@@ -3,130 +3,156 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Runtime.Remoting.Messaging;
-using System.Web;
-using m = LaLibreríaOnline.com.Models;
 
 namespace LaLibreríaOnline.com.DatabaseHelper
 {
     public class DataBase
     {
-        string cnn = "Data Source=DESKTOP-5DRNVDJ\\MSSQLSERVER01;Initial Catalog=Libreria;Integrated Security=True";
+        string connectionString = "Data Source=TACHO-PC;Initial Catalog=Libreria;Integrated Security=True";
 
-       
-        public void GuardarUsuarios(List<DatosUsuario> datosUsuario)
+
+
+        public DataTable GetAllBooks()
         {
-            string connectionString = "Data Source=DESKTOP-5DRNVDJ\\MSSQLSERVER01;Initial Catalog=Libreria;User ID=myUsername;Password=myPassword;";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                //connection.Open();
-                
-                string query = "INSERT INTO Usuarios (email, nombre, pais, provincia, direccion, codigoPostal, numeroTarjeta, expiracion, codigoSeguridad) VALUES (@Email, @Nombre, @Pais, @Provincia, @Direccion, @CodigoPostal, @NumeroTarjeta, @Expiracion, @CodigoSeguridad)";
-                SqlCommand command = new SqlCommand(query, connection);
-
-                List<SqlParameter> param = new List<SqlParameter>() {
-
-                    new SqlParameter("@Email", datosUsuario[0].email),
-                    new SqlParameter("@Nombre", datosUsuario[0].nombre),
-                    new SqlParameter("@Pais", datosUsuario[0].pais),
-                    new SqlParameter("@Provincia", datosUsuario[0].provincia),
-                    new SqlParameter("@Direccion", datosUsuario[0].direccion),
-                    new SqlParameter("@CodigoPostal", datosUsuario[0].codigoPostal),
-                    new SqlParameter("@NumeroTarjeta", datosUsuario[0].numeroTarjeta),
-                    new SqlParameter("@Expiracion", datosUsuario[0].expiracion),
-                    new SqlParameter("@CodigoSeguridad", datosUsuario[0].codigoSeguridad),
-
-                }; 
-
-                Ejecutar_Querry("[dbo].[DatosUsuarios]", param, false);
-               
-                //connection.Close();
-            }
+            return ExecuteQuery("[dbo].[ObtenerLibros]", null, true);
         }
-
-        public DataTable Obtener_Todos_Libros()
+        public DataTable GetSearchResults(string keyword)
         {
-            return Ejecutar_Querry("[dbo].[ObtenerLibros]", null, true);
-        }
-        public DataTable Obtener_Resultados_Busqueda(string busqueda)
-        {
-            List<SqlParameter> param = new List<SqlParameter>()
+            List<SqlParameter> parameters = new List<SqlParameter>()
             {
-                new SqlParameter("@busqueda", busqueda ),
+                new SqlParameter("@busqueda", keyword ),
             };
-            return Ejecutar_Querry("[dbo].[ObtenerResultadosBusqueda]", param, true);
+            return ExecuteQuery("[dbo].[ObtenerResultadosBusqueda]", parameters, true);
         }
-        public DataTable Obtener_Datos_Usuario(string email)
+        public DataTable GetUserData(string email)
         {
-            List<SqlParameter> param = new List<SqlParameter>()
+            List<SqlParameter> parameters = new List<SqlParameter>()
             {
                 new SqlParameter("@email", email ),
             };
-            return Ejecutar_Querry("[dbo].[ObtenerDatosUsuario]", param, true);
+            return ExecuteQuery("[dbo].[ObtenerDatosUsuario]", parameters, true);
         }
-        public DataTable Obtener_Favoritos_Usuario(int idUsuario)
+        public DataTable GetFavorites(int userId)
         {
-            List<SqlParameter> param = new List<SqlParameter>()
+            List<SqlParameter> parameters = new List<SqlParameter>()
             {
-                new SqlParameter("@idUsuario", idUsuario ),
+                new SqlParameter("@idUsuario", userId ),
             };
-            return Ejecutar_Querry("[dbo].[ObtenerFavoritosUsuario]", param, true);
+            return ExecuteQuery("[dbo].[ObtenerFavoritosUsuario]", parameters, true);
         }
-        public DataTable Obtener_Carrito_Usuario(int idUsuario)
+        public DataTable GetCartItems(int userId)
         {
-            List<SqlParameter> param = new List<SqlParameter>()
+            List<SqlParameter> parameters = new List<SqlParameter>()
             {
-                new SqlParameter("@idUsuario", idUsuario ),
+                new SqlParameter("@idUsuario", userId ),
             };
-            return Ejecutar_Querry("[dbo].[ObtenerCarritoUsuario]", param, true);
+            return ExecuteQuery("[dbo].[ObtenerCarritoUsuario]", parameters, true);
         }
-        public void Agregar_Favorito_BD(string isbn, int idUsuario)
+
+
+
+        public void SaveUser(List<UserData> userData)
         {
-            List<SqlParameter> param = new List<SqlParameter>()
+            List<SqlParameter> parameters = new List<SqlParameter>()
+            {
+                new SqlParameter("@idUsuario", userData[0].userId),
+                new SqlParameter("@Email", userData[0].email),
+                new SqlParameter("@Nombre", userData[0].name),
+                new SqlParameter("@Pais", userData[0].country),
+                new SqlParameter("@Provincia", userData[0].province),
+                new SqlParameter("@Direccion", userData[0].address),
+                new SqlParameter("@CodigoPostal", userData[0].postalCode),
+                new SqlParameter("@NumeroTarjeta", userData[0].cardNumber),
+                new SqlParameter("@Expiracion", userData[0].expirationDate),
+                new SqlParameter("@CodigoSeguridad", userData[0].securityCode),
+            };
+            ExecuteQuery("[dbo].[GuardarDatosUsuario]", parameters, false);
+        }
+        public void AddFavorite(string isbn, int userId)
+        {
+            List<SqlParameter> parameters = new List<SqlParameter>()
             {
                 new SqlParameter("@isbn", isbn ),
-                new SqlParameter("@idUsuario", idUsuario ),
+                new SqlParameter("@idUsuario", userId ),
             };
-            Ejecutar_Querry("[dbo].[AgregarFavorito]", param, false);
+            ExecuteQuery("[dbo].[AgregarFavorito]", parameters, false);
         }
-        public void Agregar_Carrito_BD(string isbn, int idUsuario)
+        public void AddToCart(string isbn, int userId)
         {
-            List<SqlParameter> param = new List<SqlParameter>()
+            List<SqlParameter> parameters = new List<SqlParameter>()
             {
                 new SqlParameter("@isbn", isbn ),
-                new SqlParameter("@idUsuario", idUsuario ),
+                new SqlParameter("@idUsuario", userId ),
                 new SqlParameter("@cantidad", 1 ),
             };
-            Ejecutar_Querry("[dbo].[AgregarCarrito]", param, false);
+            ExecuteQuery("[dbo].[AgregarCarrito]", parameters, false);
         }
-        public DataTable Ejecutar_Querry(string storedProcedure, List<SqlParameter> param, bool usar_adapter)
+        public void DeleteFavorite(string isbn, int userId)
+        {
+            List<SqlParameter> parameters = new List<SqlParameter>()
+            {
+                new SqlParameter("@isbn", isbn ),
+                new SqlParameter("@idUsuario", userId ),
+            };
+            ExecuteQuery("[dbo].[EliminarFavorito]", parameters, false);
+        }
+        public void RemoveCartItem(string isbn, int userId)
+        {
+            List<SqlParameter> parameters = new List<SqlParameter>()
+            {
+                new SqlParameter("@isbn", isbn ),
+                new SqlParameter("@idUsuario", userId ),
+            };
+            ExecuteQuery("[dbo].[EliminarArticuloCarrito]", parameters, false);
+        }
+        public void DeductAmountToCartItem(string isbn, int userId)
+        {
+            List<SqlParameter> parameters = new List<SqlParameter>()
+            {
+                new SqlParameter("@isbn", isbn ),
+                new SqlParameter("@idUsuario", userId ),
+            };
+            ExecuteQuery("[dbo].[RestarArticuloCarrito]", parameters, false);
+        }
+        public void AddAmountToCartItem(string isbn, int userId)
+        {
+            List<SqlParameter> parameters = new List<SqlParameter>()
+            {
+                new SqlParameter("@isbn", isbn ),
+                new SqlParameter("@idUsuario", userId ),
+            };
+            ExecuteQuery("[dbo].[SumarArticuloCarrito]", parameters, false);
+        }
+        
+
+
+
+        public DataTable ExecuteQuery(string storedProcedure, List<SqlParameter> parameters, bool useAdapter)
         {
             try
             {
-                DataTable ds = new DataTable();
-                using (SqlConnection connection = new SqlConnection(cnn))
+                DataTable dataTable = new DataTable();
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    SqlCommand cmd = connection.CreateCommand();
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.CommandText = storedProcedure;
-                    if (param != null)
+                    SqlCommand command = connection.CreateCommand();
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.CommandText = storedProcedure;
+                    if (parameters != null)
                     {
-                        foreach (SqlParameter p in param)
+                        foreach (SqlParameter parameter in parameters)
                         {
-                            cmd.Parameters.Add(p);
+                            command.Parameters.Add(parameter);
                         }
                     }
-                    cmd.ExecuteNonQuery();
-                    if (usar_adapter)
+                    command.ExecuteNonQuery();
+                    if (useAdapter)
                     {
-                        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                        adapter.Fill(ds);
+                        SqlDataAdapter adapter = new SqlDataAdapter(command);
+                        adapter.Fill(dataTable);
                     }
                 }
-                return ds;
+                return dataTable;
             }
             catch (Exception ex)
             {

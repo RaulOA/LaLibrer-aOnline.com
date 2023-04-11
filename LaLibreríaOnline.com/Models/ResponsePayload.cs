@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace LaLibreríaOnline.com.Models
+﻿namespace LaLibreríaOnline.com.Models
 {
-    public class LoginResponsePayload
+    public class ResponsePayload
     {
         public string idToken { get; set; }
         public string email { get; set; }

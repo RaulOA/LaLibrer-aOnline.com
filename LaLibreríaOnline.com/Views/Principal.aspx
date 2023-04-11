@@ -26,6 +26,9 @@
     <!-- Customized Bootstrap Stylesheet -->
     <link href="../Otros/css/style.css" rel="stylesheet" />
 
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
@@ -60,36 +63,6 @@
 
             <!-- Topbar Start -->
             <div class="container-fluid">
-                <div class="row bg-secondary py-2 px-xl-5">
-                    <div class="col-lg-6 d-none d-lg-block">
-                        <div class="d-inline-flex align-items-center">
-                            <a class="text-dark" href="">FAQs</a>
-                            <span class="text-muted px-2">|</span>
-                            <a class="text-dark" href="">Help</a>
-                            <span class="text-muted px-2">|</span>
-                            <a class="text-dark" href="">Support</a>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 text-center text-lg-right">
-                        <div class="d-inline-flex align-items-center">
-                            <a class="text-dark px-2" href="">
-                                <i class="fab fa-facebook-f"></i>
-                            </a>
-                            <a class="text-dark px-2" href="">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                            <a class="text-dark px-2" href="">
-                                <i class="fab fa-linkedin-in"></i>
-                            </a>
-                            <a class="text-dark px-2" href="">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                            <a class="text-dark pl-2" href="">
-                                <i class="fab fa-youtube"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
                 <div class="row align-items-center py-3 px-xl-5">
                     <div class="col-lg-3 d-none d-lg-block">
                         <a href="" class="text-decoration-none">
@@ -249,22 +222,36 @@
                         <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
                             <div class="card product-item border-0 mb-4">
                                 <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                                    <img class="img-fluid w-100" src="<%# Eval("foto")%>" alt="">
+                                    <img class="img-fluid w-100" src="<%# Eval("image")%>" alt="">
                                 </div>
                                 <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
                                     <div class="text-center"><%# Eval("isbn")%></div>
                                     <br />
-                                    <h4 class="card-title" style="height: 3em; overflow: hidden; word-wrap: break-word;"><%# Eval("titulo")%></h4>
-                                    <h5 class="text-truncate mb-3"><%# Eval("autor")%></h5>
-                                    <h6 class="text-truncate mb-3">Publicado el: <%# Eval("fechaPublicacion")%></h6>
+                                    <h4 class="card-title" style="height: 3em; overflow: hidden; word-wrap: break-word;"><%# Eval("title")%></h4>
+                                    <h5 class="text-truncate mb-3"><%# Eval("author")%></h5>
+                                    <h6 class="text-truncate mb-3">Publicado el: <%# Eval("publicationDate")%></h6>
                                     <div class="d-flex justify-content-center">
-                                        <h6>$<%# Eval("precio")%></h6>
+                                        <h6>$<%# Eval("price")%></h6>
                                     </div>
                                 </div>
+
                                 <div runat="server" id="Botones_Libros" class="card-footer d-flex justify-content-between bg-light border">
-                                    <a runat="server" id="Agregar_Favorito" href="#" onserverclick="Agregar_Favorito_ServerClick" class="btn btn-sm text-dark p-0" data-isbn='<%# Eval("isbn") %>'><i class="fas fa-heart text-primary mr-1"></i>Favoritos </a>
-                                    <a runat="server" id="Agregar_Carrito" href="#" onserverclick="Agregar_Carrito_ServerClick" class="btn btn-sm text-dark p-0" data-isbn='<%# Eval("isbn") %>'><i class="fas fa-shopping-cart text-primary mr-1"></i>Añadir al Carrito </a>
+                                    <%-- Si el libro es favorito, se muestra el botón Eliminar Favorito --%>
+                                    <a runat="server" id="Eliminar_Favorito" href="#" onserverclick="Eliminar_Favorito_ServerClick" class="btn btn-sm text-dark p-0" data-isbn='<%# Eval("isbn") %>' visible='<%# Convert.ToBoolean(Eval("isFavorite")) %>'>
+                                        <i class="fas fa-trash text-primary mr-1"></i>Eliminar Favorito
+                                    </a>
+
+                                    <%-- Si el libro no es favorito, se muestra el botón Agregar Favorito --%>
+                                    <a runat="server" id="Agregar_Favorito" href="#" onserverclick="Agregar_Favorito_ServerClick" class="btn btn-sm text-dark p-0" data-isbn='<%# Eval("isbn") %>' visible='<%# !Convert.ToBoolean(Eval("isFavorite")) %>'>
+                                        <i class="fas fa-heart text-primary mr-1"></i>Favoritos
+                                    </a>
+
+                                    <%-- Se muestra el botón Añadir al Carrito siempre --%>
+                                    <a runat="server" id="Agregar_Carrito" href="#" onserverclick="Agregar_Carrito_ServerClick" class="btn btn-sm text-dark p-0" data-isbn='<%# Eval("isbn") %>'>
+                                        <i class="fas fa-shopping-cart text-primary mr-1"></i>Añadir al Carrito
+                                    </a>
                                 </div>
+
                             </div>
                         </div>
                         <!-- Products Card End-->
@@ -278,70 +265,15 @@
             <!-- Products End -->
 
             <!-- Footer Start -->
-            <div class="container-fluid bg-secondary text-dark mt-5 pt-5">
-                <div class="row px-xl-5 pt-5">
-                    <div class="col-lg-4 col-md-12 mb-5 pr-3 pr-xl-5">
-                        <a href="" class="text-decoration-none">
-                            <h1 class="mb-4 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border border-white px-3 mr-1">La</span>Libreria</h1>
-                        </a>
-                        <p>Tu destino en línea para libros de calidad, conocimiento y entretenimiento. Encuentra los títulos más populares de autores destacados y descubre nuevos mundos a través de la lectura. ¡Compra hoy mismo y vive la experiencia de tener una biblioteca virtual!</p>
-                        <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>123 Street, New York, USA</p>
-                        <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>info@example.com</p>
-                        <p class="mb-0"><i class="fa fa-phone-alt text-primary mr-3"></i>+012 345 67890</p>
-                    </div>
-                    <div class="col-lg-8 col-md-12">
-                        <div class="row">
-                            <div class="col-md-4 mb-5">
-                                <h5 class="font-weight-bold text-dark mb-4">Quick Links</h5>
-                                <div class="d-flex flex-column justify-content-start">
-                                    <a class="text-dark mb-2" href="index.html"><i class="fa fa-angle-right mr-2"></i>Home</a>
-                                    <a class="text-dark mb-2" href="shop.html"><i class="fa fa-angle-right mr-2"></i>Our Shop</a>
-                                    <a class="text-dark mb-2" href="detail.html"><i class="fa fa-angle-right mr-2"></i>Shop Detail</a>
-                                    <a class="text-dark mb-2" href="cart.html"><i class="fa fa-angle-right mr-2"></i>Shopping Cart</a>
-                                    <a class="text-dark mb-2" href="checkout.html"><i class="fa fa-angle-right mr-2"></i>Checkout</a>
-                                    <a class="text-dark" href="contact.html"><i class="fa fa-angle-right mr-2"></i>Contact Us</a>
-                                </div>
-                            </div>
-                            <div class="col-md-4 mb-5">
-                                <h5 class="font-weight-bold text-dark mb-4">Quick Links</h5>
-                                <div class="d-flex flex-column justify-content-start">
-                                    <a class="text-dark mb-2" href="index.html"><i class="fa fa-angle-right mr-2"></i>Home</a>
-                                    <a class="text-dark mb-2" href="shop.html"><i class="fa fa-angle-right mr-2"></i>Our Shop</a>
-                                    <a class="text-dark mb-2" href="detail.html"><i class="fa fa-angle-right mr-2"></i>Shop Detail</a>
-                                    <a class="text-dark mb-2" href="cart.html"><i class="fa fa-angle-right mr-2"></i>Shopping Cart</a>
-                                    <a class="text-dark mb-2" href="checkout.html"><i class="fa fa-angle-right mr-2"></i>Checkout</a>
-                                    <a class="text-dark" href="contact.html"><i class="fa fa-angle-right mr-2"></i>Contact Us</a>
-                                </div>
-                            </div>
-                            <div class="col-md-4 mb-5">
-                                <h5 class="font-weight-bold text-dark mb-4">Newsletter</h5>
-                                <form action="">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control border-0 py-4" placeholder="Your Name" required="required" />
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="email" class="form-control border-0 py-4" placeholder="Your Email"
-                                            required="required" />
-                                    </div>
-                                    <div>
-                                        <button class="btn btn-primary btn-block border-0 py-3" type="submit">Subscribe Now</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
+            <div class="row border-top border-light mx-xl-5 py-4">
+                <div class="col-md-6 px-xl-0">
+                    <p class="mb-md-0 text-center text-md-left text-dark">
+                        &copy; <a class="text-dark font-weight-semi-bold">LaLibreria.com</a>. Diseño por
+                    <a class="text-dark font-weight-semi-bold">Angie Bermudez y Raul Ortega</a>
+                    </p>
                 </div>
-                <div class="row border-top border-light mx-xl-5 py-4">
-                    <div class="col-md-6 px-xl-0">
-                        <p class="mb-md-0 text-center text-md-left text-dark">
-                            &copy; <a class="text-dark font-weight-semi-bold" href="#">Your Site Name</a>. All Rights Reserved. Designed
-                    by
-                    <a class="text-dark font-weight-semi-bold" href="https://htmlcodex.com">HTML Codex</a>
-                        </p>
-                    </div>
-                    <div class="col-md-6 px-xl-0 text-center text-md-right">
-                        <img class="img-fluid" src="img/payments.png" alt="">
-                    </div>
+                <div class="col-md-6 px-xl-0 text-center text-md-right">
+                    <img class="img-fluid" src="img/payments.png" alt="">
                 </div>
             </div>
             <!-- Footer End -->

@@ -5,16 +5,17 @@ using System.IO;
 using System.Net;
 using System.Text;
 
-
 namespace LaLibreríaOnline.com.Controllers
 {
-    public class Login
+    public class LogInAndSignInController
     {
-        public LoginResponsePayload LogInWithPassword(String usuario, String contrasena)
+        public ResponsePayload SendSignInSignUpRequest(String user, String password, bool type)
         {
             var api = "AIzaSyCKIEzDbx3YWDPsC6wWwOKDaiHObhJVOrc";
-            var url = $"https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key={api}";
-            var postData = $"{{'email':'{usuario}','password':'{contrasena}','returnSecureToken':true}}";
+            string url = type
+             ? $"https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key={api}"
+             : $"https://identitytoolkit.googleapis.com/v1/accounts:signUp?key={api}";
+            var postData = $"{{'email':'{user}','password':'{password}','returnSecureToken':true}}";
             //Primero se crea un objeto HttpWebRequest y se establecen sus propiedades para indicar que es
             //una solicitud POST y que el tipo de contenido es JSON.
             HttpWebRequest request = WebRequest.Create(url) as HttpWebRequest;
@@ -35,7 +36,7 @@ namespace LaLibreríaOnline.com.Controllers
                 {
                     //Finalmente, se utiliza la biblioteca Newtonsoft.Json para deserializar el contenido
                     //de JSON de la respuesta en un objeto de tipo LoginResponsePayload y se devuelve.
-                    LoginResponsePayload payload = JsonConvert.DeserializeObject<LoginResponsePayload>(reader.ReadToEnd());
+                    ResponsePayload payload = JsonConvert.DeserializeObject<ResponsePayload>(reader.ReadToEnd());
                     return payload;
                 }
             }

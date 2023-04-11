@@ -71,13 +71,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="DatabaseHelper\StoredProcedures\1. ObtenerLibros.sql" />
+    <Content Include="DatabaseHelper\StoredProcedures\11. SumarArticuloCarrito - Copia.sql" />
+    <Content Include="DatabaseHelper\StoredProcedures\12. EliminarArticuloCarrito.sql" />
+    <Content Include="DatabaseHelper\StoredProcedures\8. GuardarDatosUsuariosql.sql" />
     <Content Include="DatabaseHelper\StoredProcedures\2. ObtenerDatosUsuario.sql" />
     <Content Include="DatabaseHelper\StoredProcedures\3. ObtenerFavoritosUsuario.sql" />
     <Content Include="DatabaseHelper\StoredProcedures\4. ObtenerCarritoUsuario.sql" />
     <Content Include="DatabaseHelper\StoredProcedures\6. AgregarCarrito.sql" />
     <Content Include="DatabaseHelper\StoredProcedures\5. AgregarFavorito.sql" />
     <Content Include="DatabaseHelper\StoredProcedures\7. ObtenerResultadosBusqueda.sql" />
-    <Content Include="DatabaseHelper\StoredProcedures\8. DatosUsuarios.sql" />
+    <Content Include="DatabaseHelper\StoredProcedures\10. RestarArticuloCarrito.sql" />
+    <Content Include="DatabaseHelper\StoredProcedures\9. EliminarFavorito.sql" />
     <Content Include="DatabaseHelper\StoredProcedures\A. Comandos Basicos.sql" />
     <Content Include="Imagenes\1.jpg" />
     <Content Include="Imagenes\10.jpg" />
@@ -154,23 +158,28 @@
     <Content Include="Otros\mail\jqBootstrapValidation.min.js" />
     <Content Include="Styles\css\Cover.css" />
     <Content Include="Styles\css\Principal.css" />
+    <Content Include="Views\Cart.aspx" />
     <Content Include="Views\Login.aspx" />
     <Content Include="Views\Principal.aspx" />
     <Content Include="Views\Registro.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\DatosDeUsuario.cs" />
-    <Compile Include="Controllers\Guardar en BD.cs" />
-    <Compile Include="Controllers\Libros.cs" />
-    <Compile Include="Controllers\Login.cs" />
-    <Compile Include="Controllers\Registro.cs" />
+    <Compile Include="Controllers\DatabaseActionsController.cs" />
+    <Compile Include="Controllers\LogInAndSignInController.cs" />
+    <Compile Include="Controllers\SessionController.cs" />
     <Compile Include="DatabaseHelper\DataBase.cs" />
-    <Compile Include="Models\DatosUsuario.cs" />
-    <Compile Include="Models\FavoritoCarrito.cs" />
-    <Compile Include="Models\Libro.cs" />
-    <Compile Include="Models\Usuario.cs" />
+    <Compile Include="Models\UserData.cs" />
+    <Compile Include="Models\Book.cs" />
+    <Compile Include="Models\ResponsePayload.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\Cart.aspx.cs">
+      <DependentUpon>Cart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Cart.aspx.designer.cs">
+      <DependentUpon>Cart.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
