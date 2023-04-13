@@ -8,7 +8,7 @@ namespace LaLibreríaOnline.com.DatabaseHelper
 {
     public class DataBase
     {
-        string connectionString = "Data Source=TACHO-PC;Initial Catalog=Libreria;Integrated Security=True";
+        string connectionString = "Data Source=DESKTOP-5DRNVDJ\\MSSQLSERVER01;Initial Catalog=Libreria;Integrated Security=True";
 
 
 

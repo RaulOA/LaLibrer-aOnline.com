@@ -158,6 +158,7 @@
     <Content Include="Otros\mail\jqBootstrapValidation.min.js" />
     <Content Include="Styles\css\Cover.css" />
     <Content Include="Styles\css\Principal.css" />
+    <Content Include="Styles\css\Registro.css" />
     <Content Include="Views\Cart.aspx" />
     <Content Include="Views\Login.aspx" />
     <Content Include="Views\Principal.aspx" />

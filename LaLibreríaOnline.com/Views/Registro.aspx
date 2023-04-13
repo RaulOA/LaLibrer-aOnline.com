@@ -9,145 +9,91 @@
     <title>Registro</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-    <link href="../Styles/css/Cover.css" rel="stylesheet" />
-    <style>
-        .bd-placeholder-img {
-            font-size: 1.125rem;
-            text-anchor: middle;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            user-select: none;
-        }
+    <link href="../Styles/Registro.css" rel="stylesheet" />
 
-        @media (min-width: 768px) {
-            .bd-placeholder-img-lg {
-                font-size: 3.5rem;
-            }
-        }
-
-        .b-example-divider {
-            height: 3rem;
-            background-color: rgba(0, 0, 0, 0.1);
-            border: solid rgba(0, 0, 0, 0.15);
-            border-width: 1px 0;
-            box-shadow: inset 0 0.5em 1.5em rgba(0, 0, 0, 0.1), inset 0 0.125em 0.5em rgba(0, 0, 0, 0.15);
-        }
-
-        .b-example-vr {
-            flex-shrink: 0;
-            width: 1.5rem;
-            height: 100vh;
-        }
-
-        .bi {
-            vertical-align: -0.125em;
-            fill: currentColor;
-        }
-
-        .nav-scroller {
-            position: relative;
-            z-index: 2;
-            height: 2.75rem;
-            overflow-y: hidden;
-        }
-
-            .nav-scroller .nav {
-                display: flex;
-                flex-wrap: nowrap;
-                padding-bottom: 1rem;
-                margin-top: -1px;
-                overflow-x: auto;
-                text-align: center;
-                white-space: nowrap;
-                -webkit-overflow-scrolling: touch;
-            }
-    </style>
 </head>
-<body class="d-flex h-100 text-center text-bg-dark">
-    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-        <header class="mb-auto">
+<body class="d-flex h-100 text-center text-bg-dark" style="background-color: #CD5C5C;">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column" style="background-color: #E9BBAB;">
+        <header class="mb-auto" style="background-color: #E9BBAB;">
             <div>
-                <h3 class="float-md-start mb-0">LaLibreriaOnline.com</h3>
+                <img src="https://cdn-icons-png.flaticon.com/512/2421/2421033.png" alt="Icono Libreria" style="float: left; width: 70px; margin-left: 30px;" onmouseover="this.style.transform='scale(1.5)'" onmouseout="this.style.transform='scale(1.2)'"/>
+                <h3 class="float-md-start mb-0" style="margin-left: 18px; margin-top: 15px;">LaLibreriaOnline.com</h3>
             </div>
         </header>
-        <main class="px-3">
-            <br />
+        <main class="px-3" style="background-color: #E9BBAB;">
             <h1>Nueva Cuenta</h1>
-            <br />
             <!-- Esta es la parte donde se deben poner los datos -->
-            <form id="FormSignIn" runat="server">
 
-                <div class="input-group mb-3" style="max-width: 400px; margin: 0 auto; padding: 0 10px;">
+            <img src="https://cdn-icons-png.flaticon.com/512/72/72648.png" alt="Icono Persona" style="float: left; margin-left: 25px; margin-top: 25px; width: 120px;" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'"/>
+
+            <form id="FormSignIn" runat="server" style="background-color: white; border: 0.5px solid #808080; max-height: 420px;">
+
+               
+                <br/>
+                <div class="input-group mb-3" style="max-width: 400px; margin: 0 auto; padding: 0 10px; margin-left: 170px; font-family: Georgia; font-size: 18px;">
                     <span class="input-group-text" id="basic-addon1">Usuario</span>
                     <input id="InputUser" runat="server" type="text" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1" />
                 </div>
-                <br />
-
-                <div class="input-group mb-3" style="max-width: 400px; margin: 0 auto; padding: 0 10px;">
+               
+                <div class="input-group mb-3" style="max-width: 400px; margin: 0 auto; padding: 0 10px; margin-left: 170px; font-family: Georgia; font-size: 18px;">
                     <span class="input-group-text" id="basic-addon2">Contraseña</span>
                     <input id="InputPass" runat="server" type="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon2" />
                 </div>
-                <br />
-                <br />
 
-                <div class="input-group mb-3" style="max-width: 400px; margin: 0 auto; padding: 0 10px;">
+                <div class="input-group mb-3" style="max-width: 400px; margin: 0 auto; padding: 0 10px;  margin-left: 170px; font-family: Georgia; font-size: 18px;">
                     <span class="input-group-text" id="basic-addon3">Nombre Completo</span> 
                     <input id="InputFullName" runat="server" type="text" class="form-control" placeholder="Full Name" aria-label="Full Name" aria-describedby="basic-addon3" />
                 </div>
-                <br />
 
-                <div class="input-group mb-3" style="max-width: 400px; margin: 0 auto; padding: 0 10px;">
+               <img src="https://cdn-icons-png.flaticon.com/512/5774/5774554.png" alt="Icono Direccion" style="float: right; width: 120px; margin-right: 25px; margin-top: -150px" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'"/>
+
+
+                <div class="input-group mb-3" style="max-width: 400px; margin: 0 auto; padding: 0 10px; margin-right: 150px; margin-top: -160px; font-family: Georgia; font-size: 18px;">
                     <span class="input-group-text" id="basic-addon4">País</span>
                     <input id="InputCountry" runat="server" type="text" class="form-control" placeholder="Country" aria-label="Country" aria-describedby="basic-addon5" />
                 </div>
-                <br />
 
-                <div class="input-group mb-3" style="max-width: 400px; margin: 0 auto; padding: 0 10px;">
+                <div class="input-group mb-3" style="max-width: 400px; margin: 0 auto; padding: 0 10px; margin-right: 150px; font-family: Georgia; font-size: 18px;">
                     <span class="input-group-text" id="basic-addon5">Provincia</span>
                     <input id="InputProvince" runat="server" type="text" class="form-control" placeholder="Province" aria-label="Province" aria-describedby="basic-addon6" />
                 </div>
-                <br />
 
-                <div class="input-group mb-3" style="max-width: 400px; margin: 0 auto; padding: 0 10px;">
+                <div class="input-group mb-3" style="max-width: 400px; margin: 0 auto; padding: 0 10px; margin-right: 150px; font-family: Georgia; font-size: 18px;">
                     <span class="input-group-text" id="basic-addon6">Dirección</span>
                     <input id="InputAddress" runat="server" type="text" class="form-control" placeholder="Address" aria-label="Address" aria-describedby="basic-addon7" />
                 </div>
-                <br />
 
-
-                <div class="input-group mb-3" style="max-width: 400px; margin: 0 auto; padding: 0 10px;">
+                <div class="input-group mb-3" style="max-width: 400px; margin: 0 auto; padding: 0 10px;  margin-right: 150px; font-family: Georgia; font-size: 18px;">
                     <span class="input-group-text" id="basic-addon7">Código Postal</span>
                     <input id="InputPostalCode" runat="server" type="number" class="form-control" placeholder="Postal Code" aria-label="Postal Code" aria-describedby="basic-addon8" />
                 </div>
                 <br />
 
-                <div class="input-group mb-3" style="max-width: 400px; margin: 0 auto; padding: 0 10px;">
+               <img src="https://static.vecteezy.com/system/resources/thumbnails/000/357/048/small/3__2821_29.jpg" alt="Icono Direccion" style="float: left; width: 140px; margin-left: 25px; margin-top: -25px" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'"/>
+
+
+                <div class="input-group mb-3" style="max-width: 400px; margin: 0 auto; padding: 0 10px; margin-left: 170px; font-family: Georgia; font-size: 18px;">
                     <span class="input-group-text" id="basic-addon8">Número de Tarjeta</span>
                     <input id="InputCardNumber" runat="server" type="number" class="form-control" placeholder="Card Number" aria-label="Card Number" aria-describedby="basic-addon9" />
                 </div>
-                <br />
 
-                 <div class="input-group mb-3" style="max-width: 400px; margin: 0 auto; padding: 0 10px;">
+                 <div class="input-group mb-3" style="max-width: 400px; margin: 0 auto; padding: 0 10px; margin-top: -8px; margin-left: 170px; font-family: Georgia; font-size: 18px;">
                     <span class="input-group-text" id="basic-addon9">Expiración</span>
                     <input id="InputExpiration" runat="server" type="text" class="form-control" placeholder="Expiration" aria-label="Expiration" aria-describedby="basic-addon10" />
                 </div>
-                <br />
-
-                
-                 <div class="input-group mb-3" style="max-width: 400px; margin: 0 auto; padding: 0 10px;">
-                    <span class="input-group-text" id="basic-addon10">Código de seguridad</span>
+           
+                 <div class="input-group mb-3" style="max-width: 400px; margin: 0 auto; padding: 0 10px; margin-left: 170px; font-family: Georgia; font-size: 18px; font-weight: bold;"> 
+                    <span class="input-group-text" id="basic-addon10"">Código de seguridad</span>
                     <input id="InputSecurityCode" runat="server" type="number" class="form-control" placeholder="Security Code" aria-label="Security Code" aria-describedby="basic-addon11" />
                 </div>
-               
-                <br />
                 <p class="lead">
-                    <button id="BtnSignIn" runat="server" onserverclick="BtnSignIn_ServerClick" class="btn btn-primary btn-lg px-4 gap-3">Registrarse</button>
+                    <button id="BtnSignIn" runat="server" onserverclick="BtnSignIn_ServerClick" class="btn btn-primary btn-lg px-4 gap-3" style="background-color: #A9A9A9; border: 1px dotted #333333; color: #000000; font-family: Georgia; font-size: 18px; position: relative; top: -120px; left: 200px;">Registrarse</button>
                 </p>
             </form>
         </main>
-        <footer class="mt-auto text-white-50">
+        <footer class="mt-auto text-white-50" style="background-color: #E9BBAB;">
             <p>
-                <a href="Login.aspx" class="text-white">Iniciar Sesión</a>
+                <a href="Login.aspx" class="text-black" style="position: relative; top: -115px; left: 405px; font-family: Georgia; font-size: 18px;">Iniciar Sesión</a>
             </p>
         </footer>
     </div>
