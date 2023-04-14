@@ -12,7 +12,7 @@
     <link href="../Styles/Registro.css" rel="stylesheet" />
 
 </head>
-<body class="d-flex h-100 text-center text-bg-dark" style="background-color: #CD5C5C;">
+<body class="d-flex h-100 text-center text-bg-dark">
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column" style="background-color: #E9BBAB;">
         <header class="mb-auto" style="background-color: #E9BBAB;">
             <div>
@@ -88,12 +88,14 @@
                 </div>
                 <p class="lead">
                     <button id="BtnSignIn" runat="server" onserverclick="BtnSignIn_ServerClick" class="btn btn-primary btn-lg px-4 gap-3" style="background-color: #A9A9A9; border: 1px dotted #333333; color: #000000; font-family: Georgia; font-size: 18px; position: relative; top: -120px; left: 200px;">Registrarse</button>
+                    <br />
                 </p>
             </form>
         </main>
+        <br />
         <footer class="mt-auto text-white-50" style="background-color: #E9BBAB;">
             <p>
-                <a href="Login.aspx" class="text-black" style="position: relative; top: -115px; left: 405px; font-family: Georgia; font-size: 18px;">Iniciar Sesión</a>
+                <a href="Login.aspx" class="text-black" style="position: relative; top: -135px; left: 405px; font-family: Georgia; font-size: 18px;">Iniciar Sesión</a>
             </p>
         </footer>
     </div>
