@@ -10,9 +10,9 @@ namespace LaLibreríaOnline.com.Views
     public partial class Cart : Page
     {
         public int userId { get; set; }
-        public decimal subTotal { get; set; }
-        public decimal shippingCosts { get; set; }
-        public decimal total { get; set; }
+        public static decimal subTotal { get; set; }
+        public static decimal shippingCosts { get; set; }
+        public static decimal total { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
             ReloadPage();
@@ -32,9 +32,9 @@ namespace LaLibreríaOnline.com.Views
             {
                 subTotal += book.price * book.amount; // Multiplica el precio por la cantidad de cada libro y lo suma al total
             }
-            this.subTotal = subTotal; // Asigna el subtotaltotal a la variable subTotal
-            this.shippingCosts = subTotal * 0.13m; // Calcula el 13% del total y lo asigna a la variable shippingCosts
-            this.total = this.subTotal + this.shippingCosts;
+            Cart.subTotal = subTotal; // Asigna el subtotaltotal a la variable subTotal
+            Cart.shippingCosts = subTotal * 0.13m; // Calcula el 13% del total y lo asigna a la variable shippingCosts
+            Cart.total = Cart.subTotal + Cart.shippingCosts;
         }
 
         protected void btnMinusAmount_ServerClick(object sender, EventArgs e)
@@ -60,7 +60,7 @@ namespace LaLibreríaOnline.com.Views
 
         protected void btnCheckout_ServerClick(object sender, EventArgs e)
         {
-
+            Response.Redirect("Bill.aspx");
         }
     }
 }

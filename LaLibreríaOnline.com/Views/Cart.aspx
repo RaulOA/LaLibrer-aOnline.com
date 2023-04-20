@@ -58,7 +58,7 @@
             <!-- Cart Start -->
             <div class="container-fluid pt-5">
                 <div class="row px-xl-5">
-                    <div class="table-responsive mb-5">
+                    <div class="col-lg-8 table-responsive mb-5">
                         <table class="table table-bordered text-center mb-0">
                             <thead class="bg-secondary text-dark">
                                 <tr>
@@ -115,59 +115,6 @@
                         </table>
                     </div>
 
-                    <div class="col-lg-8">
-                        <div class="card border-secondary mb-4">
-                            <div class="card-header bg-secondary border-0">
-                                <h4 class="font-weight-semi-bold mb-4">Dirección de Envio</h4>
-                            </div>
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-6 form-group">
-                                        <label>Nombre</label>
-                                        <input class="form-control" type="text" placeholder="Nombre" />
-                                    </div>
-                                    <div class="col-md-6 form-group">
-                                        <label>Apellido</label>
-                                        <input class="form-control" type="text" placeholder="Apellido" />
-                                    </div>
-                                    <div class="col-md-6 form-group">
-                                        <label>E-mail</label>
-                                        <input class="form-control" type="email" placeholder="ejemplo@ejemplo.com" />
-                                    </div>
-                                    <div class="col-md-6 form-group">
-                                        <label>Telefono</label>
-                                        <input class="form-control" type="number" />
-                                    </div>
-                                    <div class="col-md-6 form-group">
-                                        <label>Country</label>
-                                        <select class="custom-select">
-                                            <option selected="selected">Costa Rica</option>
-                                            <option>United States</option>
-                                            <option>Colombia</option>
-                                            <option>Mexico</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-6 form-group">
-                                        <label>Ciudad</label>
-                                        <input class="form-control" type="text" placeholder="Ciudad" />
-                                    </div>
-                                    <div class="col-md-6 form-group">
-                                        <label>Estado / Provincia</label>
-                                        <input class="form-control" type="text" placeholder="Estado" />
-                                    </div>
-                                    <div class="col-md-6 form-group">
-                                        <label>Direccion Exacta</label>
-                                        <input class="form-control" type="text" placeholder="Direccion Exacta" />
-                                    </div>
-                                    <div class="col-md-6 form-group">
-                                        <label>Codigo Postal</label>
-                                        <input class="form-control" type="number" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                     <div class="col-lg-4">
 
                         <div class="card border-secondary mb-5">
@@ -192,44 +139,6 @@
                             </div>
                         </div>
 
-                        <div class="card border-secondary mb-5">
-                            <div class="card-header bg-secondary border-0">
-                                <h4 class="font-weight-semi-bold m-0">Datos de Tarjeta</h4>
-                            </div>
-                            <div class="card-body">
-
-                                <div class="row">
-
-                                    <div class="col-md-12 form-group">
-                                        <label>Número de Tarjeta</label>
-                                        <input class="form-control" type="number" />
-                                    </div>
-                                    <div class="col-md-12 form-group">
-                                        <label>Expiración</label>
-                                        <input class="form-control" type="date" />
-                                    </div>
-                                    <div class="col-md-12 form-group">
-                                        <label>Código de seguridad</label>
-                                        <input class="form-control" type="number" max="999" min="000" />
-                                    </div>
-
-                                </div>
-
-                                <div class="form-group">
-                                    <div class="custom-control custom-radio">
-                                        <input type="radio" class="custom-control-input" name="Visa" id="Visa">
-                                        <label class="custom-control-label" for="paypal">Visa</label>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="custom-control custom-radio">
-                                        <input type="radio" class="custom-control-input" name="MasterCard" id="MasterCard">
-                                        <label class="custom-control-label" for="directcheck">MasterCard</label>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
                         <div class="card-footer border-secondary bg-transparent">
                             <button class="btn btn-block btn-primary my-3 py-3" runat="server" id="btnCheckout" onserverclick="btnCheckout_ServerClick">Generar Factura</button>
                         </div>
