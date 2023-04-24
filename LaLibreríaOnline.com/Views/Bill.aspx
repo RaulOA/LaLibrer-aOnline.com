@@ -120,6 +120,16 @@
 <body>
     <form id="form1" runat="server">
         <div>
+            <!-- Page Header Start -->
+            <div class="container-fluid mb-5" style="background: linear-gradient(to bottom, #f9e9ea, #ffffff);">
+                <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 100px">
+                    <h1 class="font-weight-semi-bold text-uppercase mb-3">Factura</h1>
+                    <div class="d-inline-flex">
+                        <p class="m-0"><a href="Principal.aspx">Pagina Principal</a></p>
+                    </div>
+                </div>
+            </div>
+            <!-- Page Header End -->
             <br />
             <div class="invoice-box">
                 <table>
@@ -202,7 +212,10 @@
                 </table>
             </div>
         </div>
-        <asp:Button ID="btnPrint" runat="server" Text="Imprimir" OnClientClick="window.print(); return false;" />
+        <br />
+        <div >
+        <asp:Button class="btn btn-block btn-primary my-6 py-6" style="width: auto; display: block; margin: 0 auto; padding: 0.5rem 1.5rem; font-size: 1rem;" ID="btnPrint" runat="server" Text="Imprimir" OnClientClick="window.print(); return false;" />
+        </div>
     </form>
 </body>
 </html>
