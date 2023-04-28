@@ -88,6 +88,7 @@
                             <i class="fas fa-shopping-cart text-primary"></i>
                             <span runat="server" id="spanCarrito" class="badge"></span>
                         </a>
+                        <a id="btn_CerrarSesion" runat="server" onserverclick="btn_CerrarSesion_ServerClick" href="#" class="btn border">Salir</a>
                     </div>
                 </div>
             </div>

@@ -41,6 +41,8 @@ namespace LaLibreríaOnline.com
                 // Si la sesión no existe...
                 Favoritos_Carrito.Visible = false;
                 txt_Bienvenido.Visible = false;
+                btn_CerrarSesion.Visible = false;
+
             }
             RenderAllBooks();
         }
@@ -154,6 +156,13 @@ namespace LaLibreríaOnline.com
         protected void Message(string mensaje)
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "alerta", $"alert('{mensaje}');", true);
+        }
+
+        protected void btn_CerrarSesion_ServerClick(object sender, EventArgs e)
+        {
+            Session.Clear(); // Borra todos los datos de la sesión
+            Message("Secion Cerrada con Exito. Hasta Pronto");
+            Response.Redirect("~/Views/Login.aspx"); // Redirecciona al usuario a la página de inicio de sesión
         }
     }
 }

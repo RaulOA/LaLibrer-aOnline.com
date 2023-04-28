@@ -124,7 +124,7 @@ namespace LaLibreríaOnline.com.Controllers
             {
                 userData.Add(new UserData
                 {
-                    userId = Convert.ToInt16(row["idUsuario"]),
+                    userId = Convert.ToInt32(row["idUsuario"]),
                     name = row["nombre"].ToString(),
                     email = row["email"].ToString(),
                     country = row["pais"].ToString(),

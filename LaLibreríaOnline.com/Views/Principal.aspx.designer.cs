@@ -87,6 +87,15 @@ namespace LaLibreríaOnline.com
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl spanCarrito;
 
         /// <summary>
+        /// Control btn_CerrarSesion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor btn_CerrarSesion;
+
+        /// <summary>
         /// Control txt_Bienvenido.
         /// </summary>
         /// <remarks>
